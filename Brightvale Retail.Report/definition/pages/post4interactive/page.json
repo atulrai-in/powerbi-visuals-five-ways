@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "post4interactive",
+  "displayName": "Post 4 · Interactive",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F3F4F6'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "ddc72f72d9284f355f3a",
+      "target": "e2baf8b2e5164961544f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "ddc72f72d9284f355f3a",
+      "target": "c148b716ced4556d7be8",
+      "type": "NoFilter"
+    },
+    {
+      "source": "e2baf8b2e5164961544f",
+      "target": "c148b716ced4556d7be8",
+      "type": "HighlightFilter"
+    }
+  ]
+}

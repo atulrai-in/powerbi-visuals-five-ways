@@ -1,0 +1,85 @@
+table Promotions
+	lineageTag: 84e92994-e062-41f7-8474-64407380ca1f
+
+	column PromotionID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c4a2fb9-f4c0-436c-b643-0e6ca38ad6a0
+		summarizeBy: none
+		sourceColumn: PromotionID
+
+		annotation SummarizationSetBy = User
+
+	column PromotionName
+		dataType: string
+		lineageTag: 7348a717-bf9b-45da-bd44-60c9ab81cd17
+		summarizeBy: none
+		sourceColumn: PromotionName
+
+		annotation SummarizationSetBy = User
+
+	column PromotionType
+		dataType: string
+		lineageTag: f04e5d1a-0d94-4ab3-9b0b-a4ca06db181f
+		summarizeBy: none
+		sourceColumn: PromotionType
+
+		annotation SummarizationSetBy = User
+
+	column StartDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 8b6bceea-132f-430e-886c-85eda7dead72
+		summarizeBy: none
+		sourceColumn: StartDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EndDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 12e6166d-538c-4ba9-91fe-d585888ea5ad
+		summarizeBy: none
+		sourceColumn: EndDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DiscountPct
+		dataType: double
+		formatString: 0%
+		lineageTag: 943e72bb-c396-4e75-8106-e834f4d7d73f
+		summarizeBy: none
+		sourceColumn: DiscountPct
+
+		annotation SummarizationSetBy = User
+
+	column Categories
+		dataType: string
+		lineageTag: bac30a5f-f6e4-4cf8-9fcd-c5776585ad66
+		summarizeBy: none
+		sourceColumn: Categories
+
+		annotation SummarizationSetBy = User
+
+	column Channels
+		dataType: string
+		lineageTag: 1db50dec-807d-471b-9423-f594fd2dffc0
+		summarizeBy: none
+		sourceColumn: Channels
+
+		annotation SummarizationSetBy = User
+
+	partition Promotions = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Promotions.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"PromotionID", Int64.Type}, {"PromotionName", type text}, {"PromotionType", type text}, {"StartDate", type date}, {"EndDate", type date}, {"DiscountPct", type number}, {"Categories", type text}, {"Channels", type text}}, "en-US")
+				in
+				    Typed
+

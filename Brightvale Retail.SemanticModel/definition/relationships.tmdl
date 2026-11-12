@@ -1,0 +1,64 @@
+relationship 283152b6-4ea0-46f1-509f-6a8d923f7f38
+	fromColumn: Sales.OrderDate
+	toColumn: Calendar.Date
+
+relationship b423d67a-d481-b91d-e82d-0247784c9c2f
+	fromColumn: Sales.StoreID
+	toColumn: Stores.StoreID
+
+relationship 21e2c632-6056-56ac-7268-79e7b3e04c19
+	fromColumn: Sales.ProductID
+	toColumn: Products.ProductID
+
+relationship 2e64b43c-fbc6-5509-ea61-489d36a4daf3
+	fromColumn: Sales.CustomerID
+	toColumn: Customers.CustomerID
+
+relationship b1441d03-571a-165e-ae1a-398e55ee296e
+	fromColumn: Sales.PromotionID
+	toColumn: Promotions.PromotionID
+
+relationship 2e8723b6-e444-a2ad-7ef9-bbacf0342141
+	fromColumn: Returns.ReturnDate
+	toColumn: Calendar.Date
+
+relationship 86c6c43a-4217-b5ce-dc63-ea8fc435dd0b
+	fromColumn: Returns.StoreID
+	toColumn: Stores.StoreID
+
+relationship 6b53cd2b-e68e-b919-c8c6-0c6f2f77fb86
+	fromColumn: Returns.ProductID
+	toColumn: Products.ProductID
+
+relationship cd8a9c13-159c-f283-de6d-9f2bd00e5bc9
+	fromColumn: Returns.CustomerID
+	toColumn: Customers.CustomerID
+
+relationship fea3a28b-7bfd-7ed9-783e-b06442dc9afa
+	fromColumn: Targets.MonthStart
+	toColumn: Calendar.Date
+
+relationship e5ec317d-530c-87fe-aeac-541fbc1a61ea
+	fromColumn: Targets.StoreID
+	toColumn: Stores.StoreID
+
+relationship e5bdb175-7536-6459-c11d-50d281fda68b
+	fromColumn: Targets.CategoryID
+	toColumn: Categories.CategoryID
+
+relationship f0ecb081-0d7a-363f-a981-206b4b594284
+	fromColumn: Inventory.SnapshotDate
+	toColumn: Calendar.Date
+
+relationship dbf0dae9-43d8-2422-d0e7-787d27824b22
+	fromColumn: Inventory.StoreID
+	toColumn: Stores.StoreID
+
+relationship c632b9cb-3959-180e-fb1a-52c8bd71a116
+	fromColumn: Inventory.CategoryID
+	toColumn: Categories.CategoryID
+
+relationship b8342d2d-aeba-089d-77fa-7dab7ab5ae15
+	fromColumn: Products.CategoryID
+	toColumn: Categories.CategoryID
+

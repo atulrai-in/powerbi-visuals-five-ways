@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Hour x weekday heatmap, one panel per channel. Colour = orders vs that channel's busiest hour, so both panels use the full scale.",
+  "data": { "name": "dataset" },
+  "transform": [
+    { "joinaggregate": [{ "op": "max", "field": "Orders", "as": "PeakOrders" }], "groupby": ["Channel"] },
+    { "calculate": "datum.Orders / datum.PeakOrders", "as": "VsPeak" },
+    { "calculate": "datum.Channel == 'Store' ? 'In store' : 'Online'", "as": "Where" },
+    { "calculate": "datum.OrderHour == 0 ? '12am' : datum.OrderHour < 12 ? datum.OrderHour + 'am' : datum.OrderHour == 12 ? '12pm' : (datum.OrderHour - 12) + 'pm'", "as": "HourLabel" }
+  ],
+  "facet": {
+    "column": {
+      "field": "Where", "type": "nominal", "sort": ["In store", "Online"],
+      "header": { "title": null, "labelFontSize": 18, "labelFontWeight": "bold", "labelColor": "#1E3A5F", "labelAnchor": "start", "labelPadding": 8 }
+    }
+  },
+  "spacing": 48,
+  "spec": {
+    "width": 630,
+    "height": 224,
+    "encoding": {
+      "x": {
+        "field": "OrderHour", "type": "ordinal",
+        "scale": { "domain": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] },
+        "axis": { "title": null, "labelAngle": 0, "labelExpr": "datum.value % 3 != 0 ? '' : datum.value == 0 ? '12am' : datum.value < 12 ? datum.value + 'am' : datum.value == 12 ? '12pm' : (datum.value - 12) + 'pm'" }
+      },
+      "y": {
+        "field": "WeekdayShort", "type": "ordinal", "sort": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "axis": { "title": null }
+      }
+    },
+    "layer": [
+      {
+        "mark": { "type": "rect", "cornerRadius": 3, "stroke": "#FFFFFF", "strokeWidth": 2 },
+        "encoding": {
+      "color": {
+        "field": "VsPeak", "type": "quantitative",
+        "scale": { "domain": [0, 1], "range": ["#EFF6FF", "#93C5FD", "#2563EB", "#1E3A8A"] },
+        "legend": { "title": "Orders vs the busiest hour", "format": ".0%", "orient": "top", "direction": "horizontal", "gradientLength": 280, "titleOrient": "left", "titlePadding": 10 }
+      },
+      "tooltip": [
+        { "field": "Where", "title": "Channel" },
+        { "field": "WeekdayShort", "title": "Day" },
+        { "field": "HourLabel", "title": "Hour" },
+        { "field": "Orders", "format": ",.0f" },
+        { "field": "VsPeak", "title": "vs busiest hour", "format": ".0%" }
+      ]
+        }
+      },
+      {
+        "description": "label the empty night hours in the store panel (one row picked so the text is drawn once)",
+        "transform": [{ "filter": "datum.Channel == 'Store' && datum.OrderHour == 12 && datum.WeekdayShort == 'Thu'" }],
+        "mark": { "type": "text", "text": "Stores closed", "fontSize": 15, "fontStyle": "italic", "color": "#9CA3AF" },
+        "encoding": { "x": { "datum": 4 }, "y": { "datum": "Thu" } }
+      }
+    ]
+  }
+}

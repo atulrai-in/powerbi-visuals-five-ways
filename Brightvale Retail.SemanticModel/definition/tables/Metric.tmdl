@@ -1,0 +1,52 @@
+table Metric
+	lineageTag: e61e67ab-3c26-4f34-a08f-a878cce2ab73
+
+	column Metric
+		dataType: string
+		lineageTag: 82877592-1d01-4c22-8b93-63e554849277
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Metric Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Metric Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Fields'
+		dataType: string
+		isHidden
+		lineageTag: ed2cc953-a813-4baa-9bbd-b49bedb2d833
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Metric Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0c1ddfe7-af2e-49fc-b377-2edf3d9ce169
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metric = calculated
+		mode: import
+		source =
+				{
+				    ("Net Sales", NAMEOF('_Measures'[Net Sales]), 0),
+				    ("YoY %", NAMEOF('_Measures'[YoY %]), 1),
+				    ("LFL YoY %", NAMEOF('_Measures'[LFL YoY %]), 2),
+				    ("Variance to Target %", NAMEOF('_Measures'[Variance to Target %]), 3),
+				    ("Margin %", NAMEOF('_Measures'[Margin %]), 4)
+				}
+

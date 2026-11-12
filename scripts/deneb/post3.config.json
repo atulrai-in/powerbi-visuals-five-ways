@@ -1,0 +1,9 @@
+{
+  "font": "Segoe UI",
+  "background": null,
+  "view": { "stroke": "transparent" },
+  "padding": 4,
+  "axis": { "domain": false, "ticks": false, "grid": false, "labelColor": "#6B7280", "labelFontSize": 14, "labelPadding": 6 },
+  "legend": { "labelColor": "#6B7280", "labelFontSize": 13, "titleColor": "#374151", "titleFontSize": 14, "gradientThickness": 14, "titleFontWeight": "normal", "titleLimit": 400, "labelLimit": 300 },
+  "header": { "labelFont": "Segoe UI" }
+}

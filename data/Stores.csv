@@ -1,0 +1,38 @@
+StoreID,StoreName,City,State,Region,Format,OpenDate,SquareFeet,Latitude,Longitude,StoreManager
+101,New York Flagship,New York,NY,Northeast,Flagship,2016-08-06,50000,40.71,-74.01,Ruby Scott
+102,Boston Plaza,Boston,MA,Northeast,Standard,2017-07-24,20900,42.36,-71.06,Emma Edwards
+103,Philadelphia Plaza,Philadelphia,PA,Northeast,Standard,2021-10-07,23100,39.95,-75.17,Grace Johnson
+104,Pittsburgh Outlet,Pittsburgh,PA,Northeast,Outlet,2010-09-11,25200,40.44,-79.99,Samuel Stewart
+105,Hartford Express,Hartford,CT,Northeast,Express,2017-11-17,6500,41.76,-72.67,Elena Edwards
+106,Newark Express,Newark,NJ,Northeast,Express,2020-09-28,7800,40.74,-74.17,Elena Kim
+107,Providence Express,Providence,RI,Northeast,Express,2020-06-10,8700,41.82,-71.41,Nora Hall
+108,Atlanta Central,Atlanta,GA,Southeast,Standard,2008-09-03,25600,33.75,-84.39,Kwame Patel
+109,Miami Galleria,Miami,FL,Southeast,Standard,2011-10-21,23000,25.76,-80.19,Sophia Walker
+110,Orlando Outlet,Orlando,FL,Southeast,Outlet,2012-10-19,24000,28.54,-81.38,Liam Nguyen
+111,Charlotte Commons,Charlotte,NC,Southeast,Standard,2015-10-01,21500,35.23,-80.84,Ruby Nelson
+112,Nashville Galleria,Nashville,TN,Southeast,Standard,2019-06-09,26600,36.16,-86.78,Ivan Young
+113,Tampa Express,Tampa,FL,Southeast,Express,2009-11-09,6500,27.95,-82.46,Daniel Kim
+114,Raleigh Express,Raleigh,NC,Southeast,Express,2025-03-01,6800,35.78,-78.64,Hiro Scott
+115,Chicago Flagship,Chicago,IL,Midwest,Flagship,2019-06-18,56300,41.88,-87.63,Priya Martinez
+116,Detroit Commons,Detroit,MI,Midwest,Standard,2010-03-09,18200,42.33,-83.05,Arjun Davis
+117,Minneapolis Commons,Minneapolis,MN,Midwest,Standard,2018-04-07,25900,44.98,-93.27,Daniel Garcia
+118,Columbus Mall,Columbus,OH,Midwest,Standard,2016-05-18,27300,39.96,-83,Maya Johnson
+119,Indianapolis Commons,Indianapolis,IN,Midwest,Standard,2013-06-14,26100,39.77,-86.16,Elena Wright
+120,Milwaukee Express,Milwaukee,WI,Midwest,Express,2016-07-27,6300,43.04,-87.91,Emma Adams
+121,Dayton Riverside,Dayton,OH,Midwest,Standard,2020-03-11,18800,39.76,-84.19,Samuel Johnson
+122,Dallas Flagship,Dallas,TX,Southwest,Flagship,2020-02-11,52300,32.78,-96.8,Kwame Turner
+123,Houston Central,Houston,TX,Southwest,Standard,2013-05-02,28000,29.76,-95.37,Nora Turner
+124,Austin Plaza,Austin,TX,Southwest,Standard,2024-04-15,26700,30.27,-97.74,Isabella Nelson
+125,Phoenix Commons,Phoenix,AZ,Southwest,Standard,2013-11-01,23700,33.45,-112.07,Aisha Nelson
+126,San Antonio Outlet,San Antonio,TX,Southwest,Outlet,2021-01-12,22400,29.42,-98.49,Jack Walker
+127,Albuquerque Express,Albuquerque,NM,Southwest,Express,2014-11-02,8500,35.08,-106.65,Owen Parker
+128,Los Angeles Flagship,Los Angeles,CA,West,Flagship,2021-12-04,59400,34.05,-118.24,Sophia Young
+129,San Francisco Mall,San Francisco,CA,West,Standard,2019-11-27,27200,37.77,-122.42,Ben Campbell
+130,Seattle Mall,Seattle,WA,West,Standard,2019-07-18,21900,47.61,-122.33,Lucia Allen
+131,Portland Commons,Portland,OR,West,Standard,2009-11-18,18100,45.52,-122.68,Isabella Evans
+132,Denver Crossing,Denver,CO,West,Standard,2017-01-14,19500,39.74,-104.99,Aiden Brown
+133,San Diego Crossing,San Diego,CA,West,Standard,2012-03-02,27200,32.72,-117.16,Ivan Stewart
+134,Las Vegas Outlet,Las Vegas,NV,West,Outlet,2017-03-15,27400,36.17,-115.14,Owen Lee
+135,Sacramento Express,Sacramento,CA,West,Express,2009-03-06,6700,38.58,-121.49,Ben Collins
+136,Salt Lake City Mall,Salt Lake City,UT,West,Standard,2025-09-20,24000,40.76,-111.89,Fatima Nelson
+99,Brightvale Online,Online,,Online,Online,2015-03-01,0,,,Kwame Lee

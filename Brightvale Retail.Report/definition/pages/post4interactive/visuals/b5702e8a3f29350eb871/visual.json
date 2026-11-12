@@ -1,0 +1,432 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b5702e8a3f29350eb871",
+  "position": {
+    "x": 40,
+    "y": 564,
+    "z": 3000,
+    "height": 496,
+    "width": 1440,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "Calendar.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Promo Window Sales"
+                }
+              },
+              "queryRef": "_Measures.Promo Window Sales",
+              "nativeQueryRef": "Promo Window Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Promo Window Sales LY"
+                }
+              },
+              "queryRef": "_Measures.Promo Window Sales LY",
+              "nativeQueryRef": "Promo Window Sales LY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Promo Phase"
+                }
+              },
+              "queryRef": "_Measures.Promo Phase",
+              "nativeQueryRef": "Promo Phase"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\n  \"description\": \"Promotion lift and hangover: daily sales of the promoted categories (bars) vs the same weekday last year (line), with phase bands and % vs last year per phase. Driven by a Promotion slicer through DAX measures.\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": 1330,\n  \"height\": 360,\n  \"transform\": [\n    {\n      \"calculate\": \"toDate(datum.Date)\",\n      \"as\": \"Day\"\n    },\n    {\n      \"calculate\": \"datum[''Promo Phase'']\",\n      \"as\": \"Phase\"\n    },\n    {\n      \"window\": [\n        {\n          \"op\": \"mean\",\n          \"field\": \"Promo Window Sales LY\",\n          \"as\": \"LY7\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"field\": \"Day\"\n        }\n      ],\n      \"frame\": [\n        -3,\n        3\n      ]\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"Day\",\n      \"type\": \"temporal\",\n      \"timeUnit\": \"yearmonthdate\",\n      \"axis\": {\n        \"title\": null,\n        \"format\": \"%d %b\",\n        \"tickCount\": \"week\",\n        \"grid\": false,\n        \"labelAngle\": 0\n      }\n    }\n  },\n  \"layer\": [\n    {\n      \"description\": \"phase bands with their % vs last year\",\n      \"transform\": [\n        {\n          \"aggregate\": [\n            {\n              \"op\": \"min\",\n              \"field\": \"Day\",\n              \"as\": \"S0\"\n            },\n            {\n              \"op\": \"max\",\n              \"field\": \"Day\",\n              \"as\": \"E0\"\n            },\n            {\n              \"op\": \"sum\",\n              \"field\": \"Promo Window Sales\",\n              \"as\": \"TY\"\n            },\n            {\n              \"op\": \"sum\",\n              \"field\": \"Promo Window Sales LY\",\n              \"as\": \"LY\"\n            }\n          ],\n          \"groupby\": [\n            \"Phase\"\n          ]\n        },\n        {\n          \"calculate\": \"toDate(datum.S0)\",\n          \"as\": \"Start\"\n        },\n        {\n          \"calculate\": \"datetime(year(datum.E0), month(datum.E0), date(datum.E0) + 1)\",\n          \"as\": \"EndNext\"\n        },\n        {\n          \"calculate\": \"datetime((time(datum.Start) + time(datum.EndNext)) / 2)\",\n          \"as\": \"Mid\"\n        },\n        {\n          \"calculate\": \"datum.TY / datum.LY - 1\",\n          \"as\": \"VsLY\"\n        }\n      ],\n      \"layer\": [\n        {\n          \"mark\": {\n            \"type\": \"rect\"\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"Start\",\n              \"type\": \"temporal\"\n            },\n            \"x2\": {\n              \"field\": \"EndNext\"\n            },\n            \"fill\": {\n              \"field\": \"Phase\",\n              \"type\": \"nominal\",\n              \"scale\": {\n                \"domain\": [\n                  \"Before\",\n                  \"During\",\n                  \"Next 4 weeks\",\n                  \"Weeks 5-8\"\n                ],\n                \"range\": [\n                  \"#FFFFFF\",\n                  \"#DBEAFE\",\n                  \"#FEE2E2\",\n                  \"#FFFFFF\"\n                ]\n              },\n              \"legend\": null\n            }\n          }\n        },\n        {\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 14,\n            \"color\": \"#6B7280\",\n            \"baseline\": \"top\"\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"Mid\",\n              \"type\": \"temporal\"\n            },\n            \"y\": {\n              \"value\": 6\n            },\n            \"text\": {\n              \"field\": \"Phase\"\n            }\n          }\n        },\n        {\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 22,\n            \"fontWeight\": \"bold\",\n            \"baseline\": \"top\"\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"Mid\",\n              \"type\": \"temporal\"\n            },\n            \"y\": {\n              \"value\": 26\n            },\n            \"text\": {\n              \"field\": \"VsLY\",\n              \"format\": \"+.0%\"\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.VsLY < 0\",\n                \"value\": \"#B91C1C\"\n              },\n              \"value\": \"#15803D\"\n            }\n          }\n        },\n        {\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 12,\n            \"color\": \"#6B7280\",\n            \"baseline\": \"top\"\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"Mid\",\n              \"type\": \"temporal\"\n            },\n            \"y\": {\n              \"value\": 54\n            },\n            \"text\": {\n              \"value\": \"vs last year\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"mark\": {\n        \"type\": \"bar\",\n        \"width\": {\n          \"band\": 0.75\n        },\n        \"cornerRadiusEnd\": 2\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"Promo Window Sales\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"axis\": {\n            \"format\": \"$,.1s\",\n            \"tickCount\": 4,\n            \"grid\": true,\n            \"gridColor\": \"#EEF0F3\"\n          }\n        },\n        \"color\": {\n          \"field\": \"Phase\",\n          \"type\": \"nominal\",\n          \"scale\": {\n            \"domain\": [\n              \"Before\",\n              \"During\",\n              \"Next 4 weeks\",\n              \"Weeks 5-8\"\n            ],\n            \"range\": [\n              \"#94A3B8\",\n              \"#2563EB\",\n              \"#DC2626\",\n              \"#94A3B8\"\n            ]\n          },\n          \"legend\": null\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"Day\",\n            \"type\": \"temporal\",\n            \"format\": \"%a %d %b %Y\"\n          },\n          {\n            \"field\": \"Phase\"\n          },\n          {\n            \"field\": \"Promo Window Sales\",\n            \"title\": \"Sales\",\n            \"format\": \"$,.0f\"\n          },\n          {\n            \"field\": \"Promo Window Sales LY\",\n            \"title\": \"Same weekday last year\",\n            \"format\": \"$,.0f\"\n          }\n        ]\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"line\",\n        \"color\": \"#111827\",\n        \"strokeWidth\": 2,\n        \"strokeDash\": [\n          5,\n          3\n        ],\n        \"interpolate\": \"monotone\"\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"LY7\",\n          \"type\": \"quantitative\"\n        }\n      }\n    },\n    {\n      \"description\": \"legend above the plot: dashed line = last year\",\n      \"data\": {\n        \"values\": [\n          {}\n        ]\n      },\n      \"layer\": [\n        {\n          \"mark\": {\n            \"type\": \"rule\",\n            \"color\": \"#111827\",\n            \"strokeWidth\": 2,\n            \"strokeDash\": [\n              5,\n              3\n            ]\n          },\n          \"encoding\": {\n            \"x\": {\n              \"value\": 0\n            },\n            \"x2\": {\n              \"value\": 28\n            },\n            \"y\": {\n              \"value\": -18\n            }\n          }\n        },\n        {\n          \"mark\": {\n            \"type\": \"text\",\n            \"align\": \"left\",\n            \"baseline\": \"middle\",\n            \"fontSize\": 13,\n            \"color\": \"#374151\",\n            \"text\": \"Last year, same weekdays (7-day average)\"\n          },\n          \"encoding\": {\n            \"x\": {\n              \"value\": 36\n            },\n            \"y\": {\n              \"value\": -18\n            }\n          }\n        }\n      ]\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"font\": \"Segoe UI\",\n  \"background\": null,\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \"padding\": 4,\n  \"axis\": {\n    \"domain\": false,\n    \"ticks\": false,\n    \"grid\": false,\n    \"labelColor\": \"#6B7280\",\n    \"labelFontSize\": 14,\n    \"labelPadding\": 6\n  },\n  \"legend\": {\n    \"labelColor\": \"#6B7280\",\n    \"labelFontSize\": 13,\n    \"titleColor\": \"#374151\",\n    \"titleFontSize\": 14,\n    \"gradientThickness\": 14,\n    \"titleFontWeight\": \"normal\",\n    \"titleLimit\": 400,\n    \"labelLimit\": 300\n  },\n  \"header\": {\n    \"labelFont\": \"Segoe UI\"\n  }\n}'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "437D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1410D"
+                }
+              }
+            },
+            "supportFieldConfiguration": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"Date\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"Promo Window Sales\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"Promo Window Sales LY\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"Promo Phase\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false}}'"
+                }
+              }
+            },
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "consolidateFieldParameters": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E5E7EB'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "88D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Title Promo"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E3A5F'"
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

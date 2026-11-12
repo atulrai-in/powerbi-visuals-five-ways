@@ -1,0 +1,109 @@
+table Returns
+	lineageTag: 533ed5b8-d864-4404-b812-8e46b5351ebc
+
+	column ReturnID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 79e0b48a-98ff-4996-a641-a3036e652624
+		summarizeBy: none
+		sourceColumn: ReturnID
+
+		annotation SummarizationSetBy = User
+
+	column OrderLineID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e7bacdd0-a019-4028-98c6-a48d439d6d44
+		summarizeBy: none
+		sourceColumn: OrderLineID
+
+		annotation SummarizationSetBy = User
+
+	column ReturnDate
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: ca130654-e113-440d-ab67-9ffa012ebb39
+		summarizeBy: none
+		sourceColumn: ReturnDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column StoreID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0c6622b8-d794-43dc-8e05-bc7c3675107a
+		summarizeBy: none
+		sourceColumn: StoreID
+
+		annotation SummarizationSetBy = User
+
+	column Channel
+		dataType: string
+		lineageTag: 9156341c-589a-4594-9cbb-d72a7c6bc3e7
+		summarizeBy: none
+		sourceColumn: Channel
+
+		annotation SummarizationSetBy = User
+
+	column CustomerID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f09ba625-25d6-451d-9cfb-6e6e56fd6956
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = User
+
+	column ProductID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 316ae467-5cc4-47d2-8c94-5e1caea7954b
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = User
+
+	column ReturnQty
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2a42ad08-7cf3-4224-be2d-e4f50cbb7776
+		summarizeBy: sum
+		sourceColumn: ReturnQty
+
+		annotation SummarizationSetBy = User
+
+	column RefundAmount
+		dataType: decimal
+		formatString: $#,0.00
+		lineageTag: 23bb9f9d-f846-498d-a567-0adfa4e541d3
+		summarizeBy: sum
+		sourceColumn: RefundAmount
+
+		annotation SummarizationSetBy = User
+
+	column ReturnReason
+		dataType: string
+		lineageTag: ac50625a-0554-48bb-8278-a15353d5b86d
+		summarizeBy: none
+		sourceColumn: ReturnReason
+
+		annotation SummarizationSetBy = User
+
+	partition Returns = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Returns.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"ReturnID", Int64.Type}, {"OrderLineID", Int64.Type}, {"ReturnDate", type date}, {"StoreID", Int64.Type}, {"Channel", type text}, {"CustomerID", Int64.Type}, {"ProductID", Int64.Type}, {"ReturnQty", Int64.Type}, {"RefundAmount", Currency.Type}, {"ReturnReason", type text}}, "en-US")
+				in
+				    Typed
+

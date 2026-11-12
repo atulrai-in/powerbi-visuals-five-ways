@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0.0",
+  "author": {
+    "name": "Brightvale demo",
+    "email": "visuals@example.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/demandVsStockF5D132B9E45D4B8089DF8CC189AC73DF.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "name": "demandVsStock",
+    "displayName": "Demand vs Stock",
+    "guid": "demandVsStockF5D132B9E45D4B8089DF8CC189AC73DF",
+    "visualClassName": "Visual",
+    "version": "1.0.0.0",
+    "description": "One row per category: monthly sales bars coloured by weeks of cover, days out of stock below the line, and growth, cover and stockout figures. Click a row to cross-filter the page.",
+    "supportUrl": "https://example.com/demand-vs-stock",
+    "gitHubUrl": ""
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

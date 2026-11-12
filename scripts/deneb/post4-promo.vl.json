@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Promotion lift and hangover: daily sales of the promoted categories (bars) vs the same weekday last year (line), with phase bands and % vs last year per phase. Driven by a Promotion slicer through DAX measures.",
+  "data": { "name": "dataset" },
+  "width": 1330,
+  "height": 360,
+  "transform": [
+    { "calculate": "toDate(datum.Date)", "as": "Day" },
+    { "calculate": "datum['Promo Phase']", "as": "Phase" },
+    { "window": [{ "op": "mean", "field": "Promo Window Sales LY", "as": "LY7" }], "sort": [{ "field": "Day" }], "frame": [-3, 3] }
+  ],
+  "encoding": {
+    "x": { "field": "Day", "type": "temporal", "timeUnit": "yearmonthdate", "axis": { "title": null, "format": "%d %b", "tickCount": "week", "grid": false, "labelAngle": 0 } }
+  },
+  "layer": [
+    {
+      "description": "phase bands with their % vs last year",
+      "transform": [
+        { "aggregate": [{ "op": "min", "field": "Day", "as": "S0" }, { "op": "max", "field": "Day", "as": "E0" }, { "op": "sum", "field": "Promo Window Sales", "as": "TY" }, { "op": "sum", "field": "Promo Window Sales LY", "as": "LY" }], "groupby": ["Phase"] },
+        { "calculate": "toDate(datum.S0)", "as": "Start" },
+        { "calculate": "datetime(year(datum.E0), month(datum.E0), date(datum.E0) + 1)", "as": "EndNext" },
+        { "calculate": "datetime((time(datum.Start) + time(datum.EndNext)) / 2)", "as": "Mid" },
+        { "calculate": "datum.TY / datum.LY - 1", "as": "VsLY" }
+      ],
+      "layer": [
+        {
+          "mark": { "type": "rect" },
+          "encoding": {
+            "x": { "field": "Start", "type": "temporal" },
+            "x2": { "field": "EndNext" },
+            "fill": { "field": "Phase", "type": "nominal", "scale": { "domain": ["Before", "During", "Next 4 weeks", "Weeks 5-8"], "range": ["#FFFFFF", "#DBEAFE", "#FEE2E2", "#FFFFFF"] }, "legend": null }
+          }
+        },
+        {
+          "mark": { "type": "text", "fontSize": 14, "color": "#6B7280", "baseline": "top" },
+          "encoding": { "x": { "field": "Mid", "type": "temporal" }, "y": { "value": 6 }, "text": { "field": "Phase" } }
+        },
+        {
+          "mark": { "type": "text", "fontSize": 22, "fontWeight": "bold", "baseline": "top" },
+          "encoding": {
+            "x": { "field": "Mid", "type": "temporal" }, "y": { "value": 26 },
+            "text": { "field": "VsLY", "format": "+.0%" },
+            "color": { "condition": { "test": "datum.VsLY < 0", "value": "#B91C1C" }, "value": "#15803D" }
+          }
+        },
+        {
+          "mark": { "type": "text", "fontSize": 12, "color": "#6B7280", "baseline": "top" },
+          "encoding": { "x": { "field": "Mid", "type": "temporal" }, "y": { "value": 54 }, "text": { "value": "vs last year" } }
+        }
+      ]
+    },
+    {
+      "mark": { "type": "bar", "width": { "band": 0.75 }, "cornerRadiusEnd": 2 },
+      "encoding": {
+        "y": { "field": "Promo Window Sales", "type": "quantitative", "title": null, "axis": { "format": "$,.1s", "tickCount": 4, "grid": true, "gridColor": "#EEF0F3" } },
+        "color": { "field": "Phase", "type": "nominal", "scale": { "domain": ["Before", "During", "Next 4 weeks", "Weeks 5-8"], "range": ["#94A3B8", "#2563EB", "#DC2626", "#94A3B8"] }, "legend": null },
+        "tooltip": [
+          { "field": "Day", "type": "temporal", "format": "%a %d %b %Y" },
+          { "field": "Phase" },
+          { "field": "Promo Window Sales", "title": "Sales", "format": "$,.0f" },
+          { "field": "Promo Window Sales LY", "title": "Same weekday last year", "format": "$,.0f" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "line", "color": "#111827", "strokeWidth": 2, "strokeDash": [5, 3], "interpolate": "monotone" },
+      "encoding": { "y": { "field": "LY7", "type": "quantitative" } }
+    },
+    {
+      "description": "legend above the plot: dashed line = last year",
+      "data": { "values": [{}] },
+      "layer": [
+        { "mark": { "type": "rule", "color": "#111827", "strokeWidth": 2, "strokeDash": [5, 3] }, "encoding": { "x": { "value": 0 }, "x2": { "value": 28 }, "y": { "value": -18 } } },
+        { "mark": { "type": "text", "align": "left", "baseline": "middle", "fontSize": 13, "color": "#374151", "text": "Last year, same weekdays (7-day average)" }, "encoding": { "x": { "value": 36 }, "y": { "value": -18 } } }
+      ]
+    }
+  ]
+}

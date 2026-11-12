@@ -1,0 +1,38 @@
+table Categories
+	lineageTag: bbb85d16-c68f-4e73-af48-c8fbd9c2d1ab
+
+	column CategoryID
+		dataType: int64
+		formatString: 0
+		lineageTag: 38f27dd0-9be2-4ed4-8086-d5506e3cd2a0
+		summarizeBy: none
+		sourceColumn: CategoryID
+
+		annotation SummarizationSetBy = User
+
+	column Category
+		dataType: string
+		lineageTag: 8de26a67-000c-4388-bb02-e9607cec7ee6
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = User
+
+	column Department
+		dataType: string
+		lineageTag: 7833bcf1-e2b8-4818-b619-944558743214
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = User
+
+	partition Categories = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Categories.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"CategoryID", Int64.Type}, {"Category", type text}, {"Department", type text}}, "en-US")
+				in
+				    Typed
+

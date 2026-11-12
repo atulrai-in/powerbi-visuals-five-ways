@@ -1,0 +1,81 @@
+table Inventory
+	lineageTag: 796b874d-77ae-4abd-9228-2f7ef05c9bd6
+
+	column SnapshotDate
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: 897e2922-1e67-4e97-a8ab-6fe95e5106c4
+		summarizeBy: none
+		sourceColumn: SnapshotDate
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column StoreID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3429229b-880e-4385-ad08-02b57b7f257a
+		summarizeBy: none
+		sourceColumn: StoreID
+
+		annotation SummarizationSetBy = User
+
+	column CategoryID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e933021f-bc70-448d-8d4a-9dfe83a9a10a
+		summarizeBy: none
+		sourceColumn: CategoryID
+
+		annotation SummarizationSetBy = User
+
+	column OnHandUnits
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3a0af913-6c66-4432-80fe-4135948d2f0e
+		summarizeBy: none
+		sourceColumn: OnHandUnits
+
+		annotation SummarizationSetBy = User
+
+	column OnHandCost
+		dataType: decimal
+		formatString: $#,0.00
+		lineageTag: 271990c6-c79a-47bb-8ec4-7b5abab5bd16
+		summarizeBy: none
+		sourceColumn: OnHandCost
+
+		annotation SummarizationSetBy = User
+
+	column StockoutDays
+		dataType: int64
+		formatString: 0
+		lineageTag: de92e5e8-4c46-4364-877a-b4fbe6bdd9f0
+		summarizeBy: none
+		sourceColumn: StockoutDays
+
+		annotation SummarizationSetBy = User
+
+	column WeeksOfCover
+		dataType: double
+		formatString: 0.0
+		lineageTag: ee4ce7ed-8127-460b-9f33-bd9745ea3982
+		summarizeBy: none
+		sourceColumn: WeeksOfCover
+
+		annotation SummarizationSetBy = User
+
+	partition Inventory = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Inventory.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"SnapshotDate", type date}, {"StoreID", Int64.Type}, {"CategoryID", Int64.Type}, {"OnHandUnits", Int64.Type}, {"OnHandCost", Currency.Type}, {"StockoutDays", Int64.Type}, {"WeeksOfCover", type number}}, "en-US")
+				in
+				    Typed
+

@@ -1,0 +1,376 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Pareto (Lorenz) curve: members ranked by spend, cumulative share of sales. Area coloured by loyalty tier, labels at tier boundaries, hover readout. A tier clicked elsewhere is cross-highlighted (Net Sales__highlight) and the other tiers fade.",
+  "data": {
+    "name": "dataset"
+  },
+  "width": 690,
+  "height": 300,
+  "transform": [
+    {
+      "filter": "datum.LoyaltyTier != 'None' && datum['Net Sales'] > 0"
+    },
+    {
+      "calculate": "isValid(datum['Net Sales__highlight']) && datum['Net Sales__highlight'] != 0 ? 1 : 0",
+      "as": "IsHL"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "Rank"
+        },
+        {
+          "op": "sum",
+          "field": "Net Sales",
+          "as": "CumSales"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Net Sales",
+          "order": "descending"
+        }
+      ],
+      "frame": [
+        null,
+        0
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "count",
+          "as": "N"
+        },
+        {
+          "op": "sum",
+          "field": "Net Sales",
+          "as": "Total"
+        },
+        {
+          "op": "sum",
+          "field": "IsHL",
+          "as": "HLN"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.Rank / datum.N",
+      "as": "TopShare"
+    },
+    {
+      "calculate": "datum.CumSales / datum.Total",
+      "as": "SalesShare"
+    },
+    {
+      "calculate": "datum.HLN > 0 && datum.HLN < datum.N && datum.IsHL == 0 ? 1 : 0",
+      "as": "Dim"
+    },
+    {
+      "filter": "datum.Rank % 10 == 1 || datum.Rank == datum.N"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "TopShare",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          1
+        ],
+        "nice": false
+      },
+      "axis": {
+        "title": "Members, ranked by spend",
+        "format": ".0%",
+        "tickCount": 5,
+        "grid": false,
+        "titleColor": "#6B7280",
+        "titleFontWeight": "normal",
+        "titleFontSize": 13
+      }
+    },
+    "y": {
+      "field": "SalesShare",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "axis": {
+        "title": "Share of member sales",
+        "format": ".0%",
+        "tickCount": 5,
+        "grid": true,
+        "gridColor": "#EEF0F3",
+        "titleColor": "#6B7280",
+        "titleFontWeight": "normal",
+        "titleFontSize": 13
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {
+          "color": "#FFFFFF",
+          "strokeWidth": 0
+        }
+      },
+      "encoding": {
+        "color": {
+          "field": "LoyaltyTier",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Platinum",
+              "Gold",
+              "Silver",
+              "Bronze"
+            ],
+            "range": [
+              "#1E3A5F",
+              "#2563EB",
+              "#93C5FD",
+              "#DBEAFE"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolType": "square"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.Dim == 1",
+            "value": 0.18
+          },
+          "value": 0.9
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#9CA3AF"
+      },
+      "encoding": {
+        "x": {
+          "datum": 0
+        },
+        "y": {
+          "datum": 0
+        },
+        "x2": {
+          "datum": 1
+        },
+        "y2": {
+          "datum": 1
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "If everyone spent the same",
+        "angle": -23.5,
+        "color": "#9CA3AF",
+        "fontSize": 12,
+        "dy": -12
+      },
+      "encoding": {
+        "x": {
+          "datum": 0.64
+        },
+        "y": {
+          "datum": 0.64
+        }
+      }
+    },
+    {
+      "description": "label the end of each tier: 'Top 4% = 26% of sales'",
+      "transform": [
+        {
+          "filter": "datum.LoyaltyTier != 'Bronze'"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "max",
+              "field": "TopShare",
+              "as": "TopShare"
+            },
+            {
+              "op": "max",
+              "field": "SalesShare",
+              "as": "SalesShare"
+            },
+            {
+              "op": "max",
+              "field": "Dim",
+              "as": "Dim"
+            }
+          ],
+          "groupby": [
+            "LoyaltyTier"
+          ]
+        },
+        {
+          "filter": "datum.TopShare < 0.97"
+        },
+        {
+          "calculate": "'Top ' + format(datum.TopShare, '.0%') + ' = ' + format(datum.SalesShare, '.0%') + ' of sales'",
+          "as": "Label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 60,
+            "color": "#111827"
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 9,
+            "dy": 10,
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#111827"
+          },
+          "encoding": {
+            "text": {
+              "field": "Label"
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "opacity": {
+          "condition": {
+            "test": "datum.Dim == 1",
+            "value": 0.3
+          },
+          "value": 1
+        }
+      }
+    },
+    {
+      "description": "hover readout: nearest point follows the pointer",
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "on": "pointermove",
+            "nearest": true,
+            "clear": "pointerout",
+            "fields": [
+              "Rank"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "opacity": 0
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "param": "hover",
+            "empty": false
+          }
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#111827",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "y": {
+              "datum": 0
+            },
+            "y2": {
+              "field": "SalesShare"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 70,
+            "color": "#F59E0B"
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -10,
+            "dy": -12,
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#B45309"
+          },
+          "encoding": {
+            "text": {
+              "value": {
+                "expr": "'Top ' + format(datum.TopShare, '.0%') + ' → ' + format(datum.SalesShare, '.0%')"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.TopShare >= 0.25"
+            }
+          ]
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "dy": -12,
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#B45309"
+          },
+          "encoding": {
+            "text": {
+              "value": {
+                "expr": "'Top ' + format(datum.TopShare, '.0%') + ' → ' + format(datum.SalesShare, '.0%')"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.TopShare < 0.25"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

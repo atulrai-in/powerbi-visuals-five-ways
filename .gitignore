@@ -1,0 +1,16 @@
+# Power BI Desktop local state
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Custom visual build output
+visuals/*/node_modules/
+visuals/*/dist/
+visuals/*/.tmp/
+visuals/*/webpack.statistics.*.html
+
+# Working files kept out of the public repo
+NOTES.md
+posts/**/*.md
+posts/**/*-full.png
+posts/**/*.pbiviz
+posts/**/*.mp4

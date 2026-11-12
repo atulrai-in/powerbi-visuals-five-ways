@@ -1,0 +1,35 @@
+PromotionID,PromotionName,PromotionType,StartDate,EndDate,DiscountPct,Categories,Channels
+0,No Promotion,None,2023-01-01,2026-12-31,0,,Store; Online
+1,New Year Sale 2023,Seasonal Sale,2022-12-26,2023-01-08,0.3,Apparel; Footwear; Home & Kitchen,Store; Online
+2,Spring Beauty Week 2023,Category Event,2023-03-15,2023-03-21,0.2,Beauty,Store; Online
+3,Summer Sports Fest 2023,Category Event,2023-06-01,2023-06-14,0.2,Sports & Outdoors,Store; Online
+4,Back to School 2023,Seasonal Sale,2023-08-01,2023-08-20,0.15,Apparel; Electronics; Accessories,Store; Online
+5,Toy Days 2023,Category Event,2023-10-10,2023-10-20,0.25,Toys & Games,Store; Online
+6,Black Friday 2023,Doorbuster,2023-11-24,2023-11-27,0.25,Apparel; Footwear; Home & Kitchen; Electronics; Beauty; Sports & Outdoors; Toys & Games; Accessories,Store; Online
+7,Online Flash Sale Spring 2023,Flash Sale,2023-04-08,2023-04-10,0.2,Home & Kitchen; Accessories,Online
+8,Online Flash Sale Autumn 2023,Flash Sale,2023-09-05,2023-09-07,0.2,Home & Kitchen; Accessories,Online
+9,New Year Sale 2024,Seasonal Sale,2023-12-26,2024-01-08,0.3,Apparel; Footwear; Home & Kitchen,Store; Online
+10,Spring Beauty Week 2024,Category Event,2024-03-15,2024-03-21,0.2,Beauty,Store; Online
+11,Summer Sports Fest 2024,Category Event,2024-06-01,2024-06-14,0.2,Sports & Outdoors,Store; Online
+12,Back to School 2024,Seasonal Sale,2024-08-01,2024-08-20,0.15,Apparel; Electronics; Accessories,Store; Online
+13,Toy Days 2024,Category Event,2024-10-10,2024-10-20,0.25,Toys & Games,Store; Online
+14,Black Friday 2024,Doorbuster,2024-11-29,2024-12-02,0.25,Apparel; Footwear; Home & Kitchen; Electronics; Beauty; Sports & Outdoors; Toys & Games; Accessories,Store; Online
+15,Online Flash Sale Spring 2024,Flash Sale,2024-04-08,2024-04-10,0.2,Home & Kitchen; Accessories,Online
+16,Online Flash Sale Autumn 2024,Flash Sale,2024-09-07,2024-09-09,0.2,Home & Kitchen; Accessories,Online
+17,New Year Sale 2025,Seasonal Sale,2024-12-26,2025-01-08,0.3,Apparel; Footwear; Home & Kitchen,Store; Online
+18,Spring Beauty Week 2025,Category Event,2025-03-15,2025-03-21,0.2,Beauty,Store; Online
+19,Summer Sports Fest 2025,Category Event,2025-06-01,2025-06-14,0.2,Sports & Outdoors,Store; Online
+20,Back to School 2025,Seasonal Sale,2025-08-01,2025-08-20,0.15,Apparel; Electronics; Accessories,Store; Online
+21,Toy Days 2025,Category Event,2025-10-10,2025-10-20,0.25,Toys & Games,Store; Online
+22,Black Friday 2025,Doorbuster,2025-11-28,2025-12-01,0.25,Apparel; Footwear; Home & Kitchen; Electronics; Beauty; Sports & Outdoors; Toys & Games; Accessories,Store; Online
+23,Online Flash Sale Spring 2025,Flash Sale,2025-04-05,2025-04-07,0.2,Home & Kitchen; Accessories,Online
+24,Online Flash Sale Autumn 2025,Flash Sale,2025-09-08,2025-09-10,0.2,Home & Kitchen; Accessories,Online
+25,New Year Sale 2026,Seasonal Sale,2025-12-26,2026-01-08,0.3,Apparel; Footwear; Home & Kitchen,Store; Online
+26,Spring Beauty Week 2026,Category Event,2026-03-15,2026-03-21,0.2,Beauty,Store; Online
+27,Summer Sports Fest 2026,Category Event,2026-06-01,2026-06-14,0.2,Sports & Outdoors,Store; Online
+28,Back to School 2026,Seasonal Sale,2026-08-01,2026-08-20,0.15,Apparel; Electronics; Accessories,Store; Online
+29,Toy Days 2026,Category Event,2026-10-10,2026-10-20,0.25,Toys & Games,Store; Online
+30,Black Friday 2026,Doorbuster,2026-11-27,2026-11-30,0.25,Apparel; Footwear; Home & Kitchen; Electronics; Beauty; Sports & Outdoors; Toys & Games; Accessories,Store; Online
+31,Online Flash Sale Spring 2026,Flash Sale,2026-04-24,2026-04-26,0.2,Home & Kitchen; Accessories,Online
+32,Online Flash Sale Autumn 2026,Flash Sale,2026-09-22,2026-09-24,0.2,Home & Kitchen; Accessories,Online
+33,Electronics Mega Week,Clearance,2025-03-10,2025-03-23,0.3,Electronics,Store; Online

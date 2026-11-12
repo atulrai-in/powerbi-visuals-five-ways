@@ -1,0 +1,51 @@
+table Breakdown
+	lineageTag: c32a5a72-d92f-4bc2-b270-21b3a7a2ab8f
+
+	column Breakdown
+		dataType: string
+		lineageTag: 031a2c0d-cb88-42c6-bc47-1a34692d3569
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Breakdown Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Breakdown Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Breakdown Fields'
+		dataType: string
+		isHidden
+		lineageTag: 091681ea-02ae-4d09-9225-45210895fc21
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Breakdown Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Breakdown Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0ecef21e-6410-4b89-a69d-08c46fbab432
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Breakdown = calculated
+		mode: import
+		source =
+				{
+				    ("Region", NAMEOF('Stores'[Region]), 0),
+				    ("Store", NAMEOF('Stores'[StoreName]), 1),
+				    ("Format", NAMEOF('Stores'[Format]), 2),
+				    ("Category", NAMEOF('Categories'[Category]), 3)
+				}
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Brightvale Retail"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "03627bc1-bb4c-4833-a032-2bb5a10803e4"
+  }
+}

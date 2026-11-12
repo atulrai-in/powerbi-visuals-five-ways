@@ -1,0 +1,194 @@
+{
+    "dataRoles": [
+        {
+            "name": "category",
+            "displayName": "Category",
+            "kind": "Grouping",
+            "description": "One row per value, e.g. product category"
+        },
+        {
+            "name": "month",
+            "displayName": "Month",
+            "kind": "Grouping",
+            "description": "A month field: a date, a yyyymm number like 202503, or month text"
+        },
+        {
+            "name": "sales",
+            "displayName": "Sales",
+            "kind": "Measure",
+            "description": "Demand: drawn as monthly bars"
+        },
+        {
+            "name": "cover",
+            "displayName": "Weeks of cover",
+            "kind": "Measure",
+            "description": "Stock on hand in weeks of sales, at month end: colours the bars"
+        },
+        {
+            "name": "stockouts",
+            "displayName": "Stockout days",
+            "kind": "Measure",
+            "description": "Days out of stock in the month: drawn below the line"
+        }
+    ],
+    "objects": {
+        "cover": {
+            "properties": {
+                "danger": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "warn": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "colors": {
+            "properties": {
+                "ok": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "warn": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "danger": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "stockout": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "rows": {
+            "properties": {
+                "sortBy": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "stockouts",
+                                "displayName": "Most days out of stock"
+                            },
+                            {
+                                "value": "growth",
+                                "displayName": "Fastest sales growth"
+                            },
+                            {
+                                "value": "cover",
+                                "displayName": "Lowest weeks of cover"
+                            },
+                            {
+                                "value": "name",
+                                "displayName": "Name"
+                            }
+                        ]
+                    }
+                },
+                "fontSize": {
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "category": {
+                        "max": 1
+                    },
+                    "month": {
+                        "max": 1
+                    },
+                    "sales": {
+                        "max": 1
+                    },
+                    "cover": {
+                        "max": 1
+                    },
+                    "stockouts": {
+                        "max": 1
+                    }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "category"
+                    },
+                    "dataReductionAlgorithm": {
+                        "top": {
+                            "count": 40
+                        }
+                    }
+                },
+                "values": {
+                    "group": {
+                        "by": "month",
+                        "select": [
+                            {
+                                "bind": {
+                                    "to": "sales"
+                                }
+                            },
+                            {
+                                "bind": {
+                                    "to": "cover"
+                                }
+                            },
+                            {
+                                "bind": {
+                                    "to": "stockouts"
+                                }
+                            }
+                        ],
+                        "dataReductionAlgorithm": {
+                            "top": {
+                                "count": 120
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "supportsLandingPage": true,
+    "supportsMultiVisualSelection": true,
+    "tooltips": {
+        "supportedTypes": {
+            "default": true,
+            "canvas": true
+        }
+    },
+    "privileges": []
+}

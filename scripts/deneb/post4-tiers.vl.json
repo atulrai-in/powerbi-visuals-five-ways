@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Share of members vs share of sales per loyalty tier. Clicking a bar cross-filters the page (Deneb simple selection mode); unselected tiers fade via __selected__.",
+  "data": { "name": "dataset" },
+  "width": 430,
+  "height": 290,
+  "transform": [
+    { "filter": "datum.LoyaltyTier != 'None'" },
+    { "joinaggregate": [{ "op": "sum", "field": "Net Sales", "as": "TotalSales" }, { "op": "sum", "field": "Active Customers", "as": "TotalMembers" }] },
+    { "calculate": "datum['Active Customers'] / datum.TotalMembers", "as": "Members" },
+    { "calculate": "datum['Net Sales'] / datum.TotalSales", "as": "Sales" },
+    { "fold": ["Members", "Sales"], "as": ["Share of", "Share"] }
+  ],
+  "encoding": {
+    "y": { "field": "LoyaltyTier", "type": "nominal", "sort": ["Platinum", "Gold", "Silver", "Bronze"], "axis": { "title": null, "labelFontSize": 15, "labelColor": "#1E3A5F", "labelFontWeight": "bold" } },
+    "yOffset": { "field": "Share of", "sort": ["Members", "Sales"] },
+    "x": { "field": "Share", "type": "quantitative", "axis": null, "scale": { "domain": [0, 0.62] } },
+    "opacity": { "condition": { "test": "datum.__selected__ == 'off'", "value": 0.25 }, "value": 1 },
+    "tooltip": [
+      { "field": "LoyaltyTier", "title": "Tier" },
+      { "field": "Active Customers", "title": "Members", "format": ",.0f" },
+      { "field": "Net Sales", "format": "$,.0f" },
+      { "field": "Share of" },
+      { "field": "Share", "format": ".1%" }
+    ]
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar", "cornerRadiusEnd": 3, "height": { "band": 0.9 }, "cursor": "pointer" },
+      "encoding": {
+        "color": {
+          "field": "Share of", "type": "nominal", "scale": { "domain": ["Members", "Sales"], "range": ["#CBD5E1", "#1E3A5F"] },
+          "legend": { "title": null, "orient": "top", "direction": "horizontal", "symbolType": "square", "labelExpr": "datum.value == 'Members' ? 'Share of members' : 'Share of sales'" }
+        }
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 13 },
+      "encoding": {
+        "text": { "field": "Share", "format": ".0%" },
+        "color": { "condition": { "test": "datum['Share of'] == 'Sales'", "value": "#1E3A5F" }, "value": "#6B7280" }
+      }
+    }
+  ]
+}

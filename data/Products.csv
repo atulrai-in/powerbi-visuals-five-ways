@@ -1,0 +1,401 @@
+ProductID,ProductName,CategoryID,Subcategory,Brand,PriceTier,ListPrice,UnitCost,LaunchDate
+1001,Urbanline Tailored Hoodie,1,Tops,Urbanline,Better,42.99,16.44,2019-11-13
+1002,Urbanline Everyday Joggers,1,Bottoms,Urbanline,Best,91.99,37.77,2020-07-23
+1003,Halden Slim Puffer,1,Outerwear,Halden,Best,229.99,102.09,2024-09-21
+1004,Mira & Co Everyday Wrap Dress,1,Dresses,Mira & Co,Best,128.99,57.12,2020-07-04
+1005,Kestrel Classic Blouse,1,Tops,Kestrel,Best,67.99,27.94,2022-09-12
+1006,Kestrel Slim Jeans,1,Bottoms,Kestrel,Best,67.99,31.3,2021-01-26
+1007,Mira & Co Studio Puffer,1,Outerwear,Mira & Co,Better,121.99,47.75,2019-11-29
+1008,Thornfield Relaxed Wrap Dress,1,Dresses,Thornfield,Good,55.99,25.56,2019-05-22
+1009,Halden Tailored Oxford Shirt,1,Tops,Halden,Best,50.99,21,2025-09-01
+1010,Urbanline Tailored Joggers,1,Bottoms,Urbanline,Good,30.99,11.72,2021-07-07
+1011,Mira & Co Relaxed Puffer,1,Outerwear,Mira & Co,Best,197.99,86.75,2020-10-06
+1012,Mira & Co Studio Midi Dress,1,Dresses,Mira & Co,Good,46.99,18.82,2023-11-11
+1013,Halden Heritage Polo,1,Tops,Halden,Better,35.99,16.45,2023-08-28
+1014,Mira & Co Slim Shorts,1,Bottoms,Mira & Co,Good,30.99,12.89,2020-12-18
+1015,Halden Relaxed Puffer,1,Outerwear,Halden,Good,87.99,39.21,2022-07-28
+1016,Thornfield Cotton Midi Dress,1,Dresses,Thornfield,Good,70.99,30.55,2022-07-05
+1017,Kestrel Linen Polo,1,Tops,Kestrel,Best,59.99,27.23,2022-07-01
+1018,Kestrel Classic Joggers,1,Bottoms,Kestrel,Best,54.99,21.77,2024-11-20
+1019,Mira & Co Relaxed Rain Jacket,1,Outerwear,Mira & Co,Better,110.99,42.78,2019-10-04
+1020,Halden Studio Maxi Dress,1,Dresses,Halden,Better,78.99,35,2019-02-01
+1021,Mira & Co Weekend Blouse,1,Tops,Mira & Co,Better,31.99,14.3,2019-01-23
+1022,Mira & Co Studio Pleated Skirt,1,Bottoms,Mira & Co,Good,33.99,15.03,2021-10-03
+1023,Mira & Co Tailored Rain Jacket,1,Outerwear,Mira & Co,Better,120.99,47.1,2021-11-19
+1024,Kestrel Relaxed Midi Dress,1,Dresses,Kestrel,Good,59.99,27.16,2019-09-21
+1025,Halden Everyday Oxford Shirt,1,Tops,Halden,Good,15.99,6.74,2019-11-02
+1026,Mira & Co Cotton Joggers,1,Bottoms,Mira & Co,Better,39.99,15.79,2021-11-05
+1027,Urbanline Classic Puffer,1,Outerwear,Urbanline,Good,79.99,31.37,2019-06-09
+1028,Kestrel Classic Shirt Dress,1,Dresses,Kestrel,Better,74.99,31.56,2021-01-02
+1029,Urbanline Everyday Hoodie,1,Tops,Urbanline,Good,19.99,8.28,2022-01-03
+1030,Kestrel Weekend Chinos,1,Bottoms,Kestrel,Better,39.99,16.66,2022-08-16
+1031,Thornfield Linen Rain Jacket,1,Outerwear,Thornfield,Better,105.99,45.85,2020-02-23
+1032,Mira & Co Weekend Midi Dress,1,Dresses,Mira & Co,Better,76.99,31.4,2021-08-19
+1033,Halden Classic Hoodie,1,Tops,Halden,Good,27.99,11.49,2019-10-31
+1034,Thornfield Weekend Shorts,1,Bottoms,Thornfield,Good,31.99,14.01,2020-07-01
+1035,Kestrel Linen Gilet,1,Outerwear,Kestrel,Best,133.99,51.85,2021-07-01
+1036,Halden Relaxed Maxi Dress,1,Dresses,Halden,Better,77.99,30.08,2020-03-28
+1037,Mira & Co Classic Tee,1,Tops,Mira & Co,Better,27.99,12.37,2021-06-14
+1038,Halden Relaxed Chinos,1,Bottoms,Halden,Better,44.99,18.36,2019-09-07
+1039,Mira & Co Weekend Rain Jacket,1,Outerwear,Mira & Co,Best,162.99,65.43,2025-09-12
+1040,Mira & Co Classic Midi Dress,1,Dresses,Mira & Co,Best,83.99,33.51,2025-05-25
+1041,Thornfield Slim Oxford Shirt,1,Tops,Thornfield,Best,56.99,22.07,2019-04-13
+1042,Kestrel Slim Shorts,1,Bottoms,Kestrel,Better,42.99,17.54,2022-12-26
+1043,Kestrel Everyday Gilet,1,Outerwear,Kestrel,Best,176.99,67.66,2021-10-17
+1044,Urbanline Weekend Shirt Dress,1,Dresses,Urbanline,Best,133.99,59.17,2019-02-21
+1045,Urbanline Everyday Oxford Shirt,1,Tops,Urbanline,Good,22.99,9.36,2019-01-25
+1046,Halden Relaxed Jeans,1,Bottoms,Halden,Best,61.99,26.35,2019-03-07
+1047,Thornfield Relaxed Puffer,1,Outerwear,Thornfield,Good,97.99,41.22,2024-08-24
+1048,Urbanline Studio Maxi Dress,1,Dresses,Urbanline,Best,132.99,59.7,2019-04-07
+1049,Urbanline Slim Blouse,1,Tops,Urbanline,Best,55.99,24.27,2020-11-03
+1050,Mira & Co Tailored Chinos,1,Bottoms,Mira & Co,Best,51.99,22.96,2020-12-21
+1051,Urbanline Studio Puffer,1,Outerwear,Urbanline,Good,71.99,27.64,2019-01-03
+1052,Mira & Co Weekend Wrap Dress,1,Dresses,Mira & Co,Best,87.99,35.49,2022-12-30
+1053,Thornfield Cotton Polo,1,Tops,Thornfield,Better,32.99,12.98,2024-03-28
+1054,Mira & Co Studio Jeans,1,Bottoms,Mira & Co,Better,39.99,17.56,2022-11-20
+1055,Halden Heritage Rain Jacket,1,Outerwear,Halden,Better,115.99,44.91,2019-04-02
+1056,Mira & Co Relaxed Midi Dress,1,Dresses,Mira & Co,Better,75.99,31.11,2019-09-24
+1057,Mira & Co Cotton Knit Sweater,1,Tops,Mira & Co,Good,23.99,10.67,2022-04-10
+1058,Kestrel Studio Shorts,1,Bottoms,Kestrel,Good,31.99,14.23,2021-12-05
+1059,Mira & Co Slim Puffer,1,Outerwear,Mira & Co,Good,93.99,42.23,2021-09-18
+1060,Kestrel Slim Wrap Dress,1,Dresses,Kestrel,Good,55.99,24.43,2019-02-02
+1061,Lumo Leather Runner,2,Sneakers,Lumo,Best,147.99,79.46,2020-07-25
+1062,Lumo Leather Chelsea Boot,2,Boots,Lumo,Best,203.99,93.35,2022-01-03
+1063,Cobble & Lace Court Espadrille,2,Sandals,Cobble & Lace,Better,36.99,17.38,2021-06-22
+1064,Lumo Leather Derby,2,Formal,Lumo,Better,92.99,42.88,2022-04-09
+1065,Lumo Leather Sneaker,2,Sneakers,Lumo,Better,93.99,51.07,2020-10-25
+1066,Peakstep Leather Ankle Boot,2,Boots,Peakstep,Good,89.99,43.57,2019-12-07
+1067,Lumo Cloud Espadrille,2,Sandals,Lumo,Good,22.99,10.57,2021-03-18
+1068,Cobble & Lace Canvas Derby,2,Formal,Cobble & Lace,Best,160.99,77.64,2021-03-06
+1069,Stridewell Cloud Sneaker,2,Sneakers,Stridewell,Best,132.99,66.94,2019-05-01
+1070,Cobble & Lace Runner Hiking Boot,2,Boots,Cobble & Lace,Best,205.99,94.33,2019-09-10
+1071,Cobble & Lace City Slide,2,Sandals,Cobble & Lace,Good,27.99,13.86,2020-10-10
+1072,Stridewell Canvas Loafer,2,Formal,Stridewell,Good,85.99,44.13,2025-02-19
+1073,Stridewell Runner Trainer,2,Sneakers,Stridewell,Best,110.99,54.96,2025-12-25
+1074,Lumo City Ankle Boot,2,Boots,Lumo,Better,143.99,65.24,2020-01-03
+1075,Stridewell Canvas Slide,2,Sandals,Stridewell,Better,29.99,15.92,2021-05-27
+1076,Peakstep Cloud Oxford,2,Formal,Peakstep,Good,72.99,35.48,2020-11-26
+1077,Cobble & Lace Trail Sneaker,2,Sneakers,Cobble & Lace,Better,87.99,47.65,2024-07-27
+1078,Cobble & Lace Court Chelsea Boot,2,Boots,Cobble & Lace,Good,87.99,42.96,2022-10-02
+1079,Stridewell Court Slide,2,Sandals,Stridewell,Better,53.99,26.36,2022-06-18
+1080,Stridewell Leather Oxford,2,Formal,Stridewell,Better,108.99,55.35,2019-12-23
+1081,Stridewell Court Trainer,2,Sneakers,Stridewell,Good,67.99,36.44,2021-06-02
+1082,Lumo Canvas Chelsea Boot,2,Boots,Lumo,Better,150.99,79.19,2019-01-21
+1083,Peakstep Leather Sandal,2,Sandals,Peakstep,Good,20.99,9.81,2021-05-30
+1084,Peakstep Canvas Derby,2,Formal,Peakstep,Good,79.99,43.38,2026-04-12
+1085,Peakstep City Trainer,2,Sneakers,Peakstep,Good,67.99,34,2022-06-20
+1086,Lumo Trail Hiking Boot,2,Boots,Lumo,Better,143.99,78.53,2022-08-16
+1087,Stridewell Court Espadrille,2,Sandals,Stridewell,Better,28.99,14.81,2020-04-12
+1088,Lumo Classic Loafer,2,Formal,Lumo,Good,76.99,38.52,2019-12-15
+1089,Peakstep Runner Sneaker,2,Sneakers,Peakstep,Better,109.99,56.79,2025-08-31
+1090,Lumo Leather Hiking Boot,2,Boots,Lumo,Good,124.99,58.86,2022-11-17
+1091,Lumo Classic Sandal,2,Sandals,Lumo,Best,55.99,25.9,2019-11-03
+1092,Peakstep Leather Oxford,2,Formal,Peakstep,Best,136.99,68.84,2020-03-11
+1093,Peakstep Runner Runner,2,Sneakers,Peakstep,Good,63.99,29.46,2020-02-15
+1094,Stridewell Classic Ankle Boot,2,Boots,Stridewell,Good,110.99,60.02,2022-03-05
+1095,Cobble & Lace Trail Slide,2,Sandals,Cobble & Lace,Good,26.99,13.86,2019-02-19
+1096,Lumo Classic Oxford,2,Formal,Lumo,Best,160.99,75.83,2022-01-31
+1097,Stridewell Canvas Runner,2,Sneakers,Stridewell,Better,72.99,38.52,2020-05-11
+1098,Peakstep Trail Chelsea Boot,2,Boots,Peakstep,Better,125.99,64.38,2021-11-15
+1099,Lumo Leather Sandal,2,Sandals,Lumo,Best,68.99,32.86,2020-07-09
+1100,Cobble & Lace Trail Derby,2,Formal,Cobble & Lace,Better,120.99,59.44,2022-06-27
+1101,Cobble & Lace Canvas Runner,2,Sneakers,Cobble & Lace,Best,122.99,57.25,2019-07-31
+1102,Stridewell Classic Chelsea Boot,2,Boots,Stridewell,Best,165.99,84.13,2020-01-01
+1103,Lumo Runner Sandal,2,Sandals,Lumo,Best,66.99,32.28,2021-05-03
+1104,Lumo Canvas Oxford,2,Formal,Lumo,Better,109.99,57.56,2022-09-05
+1105,Stridewell City Runner,2,Sneakers,Stridewell,Good,66.99,33.44,2021-08-11
+1106,Nestform Linen Skillet,3,Kitchen,Nestform,Better,29.99,17.99,2020-05-05
+1107,Oakmere Woven Sheet Set,3,Bedding,Oakmere,Better,85.99,43.38,2025-07-26
+1108,Oakmere Cast Iron Candle,3,Decor,Oakmere,Better,45.99,24.62,2021-09-11
+1109,Nestform Marble Shelf Unit,3,Storage,Nestform,Better,31.99,18.39,2023-12-31
+1110,Hearthly Linen Skillet,3,Kitchen,Hearthly,Best,167.99,91.05,2020-06-09
+1111,Hearthly Linen Duvet Cover,3,Bedding,Hearthly,Good,49.99,27.49,2022-10-14
+1112,Hearthly Oak Wall Mirror,3,Decor,Hearthly,Best,84.99,43.87,2019-11-28
+1113,Linden Home Woven Basket,3,Storage,Linden Home,Good,21.99,11.43,2024-07-04
+1114,Oakmere Linen Mixing Bowls,3,Kitchen,Oakmere,Good,24.99,13.86,2020-05-14
+1115,Nestform Woven Throw Blanket,3,Bedding,Nestform,Better,56.99,28.69,2020-11-02
+1116,Oakmere Oak Wall Mirror,3,Decor,Oakmere,Better,26.99,14.83,2020-02-20
+1117,Nestform Oak Shelf Unit,3,Storage,Nestform,Good,15.99,9.56,2020-09-22
+1118,Nestform Ceramic Kettle,3,Kitchen,Nestform,Best,62.99,34.35,2021-07-19
+1119,Hearthly Ceramic Throw Blanket,3,Bedding,Hearthly,Better,99.99,52.06,2019-02-10
+1120,Nestform Ceramic Candle,3,Decor,Nestform,Best,78.99,44.47,2020-06-01
+1121,Linden Home Linen Shelf Unit,3,Storage,Linden Home,Best,36.99,20.67,2022-06-01
+1122,Linden Home Linen Mixing Bowls,3,Kitchen,Linden Home,Good,24.99,14.4,2019-03-05
+1123,Linden Home Ceramic Pillow Pair,3,Bedding,Linden Home,Good,55.99,32.65,2021-06-04
+1124,Hearthly Oak Table Lamp,3,Decor,Hearthly,Better,26.99,15.38,2022-04-13
+1125,Nestform Oak Jar Set,3,Storage,Nestform,Best,132.99,72.18,2023-07-25
+1126,Hearthly Ceramic Kettle,3,Kitchen,Hearthly,Better,27.99,16.2,2019-10-21
+1127,Hearthly Oak Sheet Set,3,Bedding,Hearthly,Better,88.99,48.69,2019-01-04
+1128,Oakmere Nordic Vase,3,Decor,Oakmere,Good,11.99,5.99,2021-01-04
+1129,Linden Home Woven Shelf Unit,3,Storage,Linden Home,Better,28.99,16.74,2022-01-02
+1130,Nestform Ceramic Mixing Bowls,3,Kitchen,Nestform,Good,15.99,8.72,2024-11-20
+1131,Linden Home Woven Pillow Pair,3,Bedding,Linden Home,Best,100.99,55.39,2022-11-09
+1132,Nestform Ceramic Table Lamp,3,Decor,Nestform,Good,21.99,13.26,2019-04-28
+1133,Oakmere Oak Basket,3,Storage,Oakmere,Good,24.99,14.89,2025-09-10
+1134,Oakmere Glass Mixing Bowls,3,Kitchen,Oakmere,Good,21.99,13.21,2021-07-27
+1135,Linden Home Cast Iron Duvet Cover,3,Bedding,Linden Home,Best,110.99,62.09,2022-06-27
+1136,Oakmere Nordic Candle,3,Decor,Oakmere,Good,21.99,12.65,2019-05-11
+1137,Hearthly Nordic Shelf Unit,3,Storage,Hearthly,Better,34.99,19.27,2025-07-05
+1138,Oakmere Marble Skillet,3,Kitchen,Oakmere,Better,24.99,13.55,2025-04-18
+1139,Oakmere Linen Duvet Cover,3,Bedding,Oakmere,Better,66.99,37.33,2025-11-09
+1140,Nestform Oak Vase,3,Decor,Nestform,Good,22.99,11.55,2022-05-26
+1141,Linden Home Marble Basket,3,Storage,Linden Home,Best,73.99,36.91,2024-01-14
+1142,Oakmere Woven Cutting Board,3,Kitchen,Oakmere,Best,122.99,61.84,2023-06-09
+1143,Linden Home Marble Duvet Cover,3,Bedding,Linden Home,Good,34.99,20.2,2025-11-05
+1144,Hearthly Woven Wall Mirror,3,Decor,Hearthly,Best,62.99,36.85,2021-12-17
+1145,Linden Home Linen Jar Set,3,Storage,Linden Home,Good,18.99,10.33,2021-06-10
+1146,Linden Home Nordic Cutting Board,3,Kitchen,Linden Home,Best,102.99,55.36,2021-02-20
+1147,Oakmere Nordic Throw Blanket,3,Bedding,Oakmere,Best,134.99,76.52,2021-08-21
+1148,Linden Home Woven Table Lamp,3,Decor,Linden Home,Best,74.99,42.63,2021-12-24
+1149,Linden Home Oak Basket,3,Storage,Linden Home,Good,16.99,9.03,2019-01-05
+1150,Hearthly Linen Cutting Board,3,Kitchen,Hearthly,Better,54.99,32.58,2020-01-05
+1151,Oakmere Cast Iron Duvet Cover,3,Bedding,Oakmere,Good,32.99,17.82,2022-01-08
+1152,Hearthly Cast Iron Wall Mirror,3,Decor,Hearthly,Better,32.99,18.94,2021-12-02
+1153,Nestform Glass Shelf Unit,3,Storage,Nestform,Best,107.99,59.1,2022-02-10
+1154,Linden Home Oak Skillet,3,Kitchen,Linden Home,Better,30.99,15.76,2021-11-19
+1155,Linden Home Cast Iron Pillow Pair,3,Bedding,Linden Home,Best,145.99,76.92,2020-02-03
+1156,Linden Home Nordic Table Lamp,3,Decor,Linden Home,Good,22.99,13.51,2021-08-19
+1157,Oakmere Cast Iron Jar Set,3,Storage,Oakmere,Better,34.99,18.81,2021-11-16
+1158,Hearthly Oak Kettle,3,Kitchen,Hearthly,Good,19.99,10.88,2020-04-27
+1159,Hearthly Glass Throw Blanket,3,Bedding,Hearthly,Good,37.99,22.4,2020-03-03
+1160,Oakmere Marble Wall Mirror,3,Decor,Oakmere,Better,51.99,27.7,2021-08-30
+1161,Voltra Headphones Ultra,4,Audio,Voltra,Best,235.99,175.53,2020-12-06
+1162,Pixelon Smartwatch S,4,Wearables,Pixelon,Good,108.99,81.02,2024-09-22
+1163,Arcwave Tablet Ultra,4,Computing,Arcwave,Better,148.99,107.77,2022-08-24
+1164,Voltra Smart Plug S,4,Home Tech,Voltra,Good,23.99,19.77,2022-03-29
+1165,Arcwave Wireless Earbuds Lite,4,Audio,Arcwave,Better,62.99,45.38,2022-09-04
+1166,Sonique Fitness Band Mini,4,Wearables,Sonique,Good,40.99,32.34,2021-10-01
+1167,Pixelon Keyboard Max,4,Computing,Pixelon,Best,523.99,410.54,2019-10-29
+1168,Voltra Security Camera Max,4,Home Tech,Voltra,Better,23.99,18.1,2023-05-04
+1169,Pixelon Wireless Earbuds S,4,Audio,Pixelon,Best,331.99,266.41,2022-08-01
+1170,Pixelon Fitness Band Max,4,Wearables,Pixelon,Good,107.99,78.54,2020-10-14
+1171,Voltra Tablet Plus,4,Computing,Voltra,Better,86.99,67.13,2021-09-11
+1172,Voltra Security Camera Mini,4,Home Tech,Voltra,Best,54.99,43.37,2021-11-15
+1173,Pixelon Wireless Earbuds Plus,4,Audio,Pixelon,Best,154.99,111.58,2020-12-22
+1174,Sonique Fitness Band Max,4,Wearables,Sonique,Better,216.99,163.04,2019-02-23
+1175,Voltra Mouse Max,4,Computing,Voltra,Best,549.99,400.49,2020-06-26
+1176,Pixelon Streaming Stick Air,4,Home Tech,Pixelon,Better,33.99,26.87,2024-11-18
+1177,Pixelon Headphones Mini,4,Audio,Pixelon,Good,49.99,40.51,2021-06-30
+1178,Pixelon Fitness Band Plus,4,Wearables,Pixelon,Good,69.99,57.26,2022-04-02
+1179,Arcwave Keyboard Pro,4,Computing,Arcwave,Better,241.99,193.95,2020-12-21
+1180,Pixelon Streaming Stick Mini,4,Home Tech,Pixelon,Best,72.99,53.66,2022-01-15
+1181,Voltra Soundbar Plus,4,Audio,Voltra,Better,65.99,52.99,2021-08-17
+1182,Pixelon Smartwatch Max,4,Wearables,Pixelon,Best,390.99,302.62,2022-05-10
+1183,Sonique Webcam Lite,4,Computing,Sonique,Good,42.99,34.47,2025-01-11
+1184,Sonique Security Camera Plus,4,Home Tech,Sonique,Good,19.99,15.85,2022-05-07
+1185,Voltra Headphones Max,4,Audio,Voltra,Best,184.99,137.96,2021-03-21
+1186,Arcwave Smartwatch Plus,4,Wearables,Arcwave,Better,169.99,133.69,2021-04-08
+1187,Sonique Webcam Max,4,Computing,Sonique,Better,270.99,221.01,2022-08-16
+1188,Pixelon Security Camera Lite,4,Home Tech,Pixelon,Better,32.99,22.65,2020-06-06
+1189,Arcwave Headphones Lite,4,Audio,Arcwave,Good,27.99,19.87,2021-07-01
+1190,Arcwave Fitness Band Pro,4,Wearables,Arcwave,Better,108.99,82.91,2021-06-27
+1191,Voltra Mouse Air,4,Computing,Voltra,Good,71.99,58.78,2021-02-20
+1192,Arcwave Smart Plug Air,4,Home Tech,Arcwave,Best,70.99,52.75,2019-12-10
+1193,Sonique Soundbar Max,4,Audio,Sonique,Better,147.99,105.89,2023-10-17
+1194,Voltra Smartwatch Pro,4,Wearables,Voltra,Good,84.99,61.98,2023-08-06
+1195,Voltra Webcam Ultra,4,Computing,Voltra,Best,293.99,223.96,2020-12-20
+1196,Voltra Security Camera Ultra,4,Home Tech,Voltra,Good,22.99,17.22,2022-05-21
+1197,Voltra Bluetooth Speaker Mini,4,Audio,Voltra,Good,49.99,39.41,2020-02-06
+1198,Pixelon Fitness Band Pro,4,Wearables,Pixelon,Best,372.99,300.26,2020-08-29
+1199,Arcwave Mouse Mini,4,Computing,Arcwave,Good,83.99,68.26,2021-08-26
+1200,Arcwave Smart Plug Pro,4,Home Tech,Arcwave,Best,167.99,118.3,2021-08-12
+1201,Voltra Bluetooth Speaker Lite,4,Audio,Voltra,Good,46.99,32.3,2019-11-06
+1202,Arcwave Fitness Band Plus,4,Wearables,Arcwave,Best,222.99,163.13,2022-08-18
+1203,Pixelon Webcam S,4,Computing,Pixelon,Best,624.99,479.36,2021-06-09
+1204,Sonique Security Camera Lite,4,Home Tech,Sonique,Better,25.99,21.58,2020-02-22
+1205,Sonique Wireless Earbuds Air,4,Audio,Sonique,Good,38.99,27.7,2022-03-28
+1206,Voltra Smartwatch Mini,4,Wearables,Voltra,Better,150.99,105.32,2022-03-31
+1207,Voltra Tablet S,4,Computing,Voltra,Good,28.99,23.85,2020-09-24
+1208,Arcwave Security Camera Plus,4,Home Tech,Arcwave,Good,18.99,14.2,2022-08-14
+1209,Voltra Bluetooth Speaker Max,4,Audio,Voltra,Better,87.99,71.82,2021-12-31
+1210,Sonique Smartwatch Pro,4,Wearables,Sonique,Best,364.99,254.97,2021-06-30
+1211,Petal & Pine Overnight Serum,5,Skincare,Petal & Pine,Good,10.99,4.03,2026-02-14
+1212,Lumiere Lab Hydrating Mascara,5,Makeup,Lumiere Lab,Best,54.99,18.91,2022-04-27
+1213,Verdance Overnight Shampoo,5,Haircare,Verdance,Good,12.99,4.46,2021-07-06
+1214,Lumiere Lab Hydrating Eau de Parfum,5,Fragrance,Lumiere Lab,Best,60.99,22.95,2020-12-07
+1215,Petal & Pine Daily Cleanser,5,Skincare,Petal & Pine,Better,24.99,9.08,2020-02-20
+1216,Glowry Overnight Lipstick,5,Makeup,Glowry,Better,30.99,11.58,2023-11-02
+1217,Petal & Pine Radiance Hair Oil,5,Haircare,Petal & Pine,Better,18.99,7.58,2021-01-17
+1218,Verdance Daily Eau de Parfum,5,Fragrance,Verdance,Better,54.99,19.18,2019-01-15
+1219,Lumiere Lab Hydrating Cleanser,5,Skincare,Lumiere Lab,Good,18.99,7.27,2020-12-15
+1220,Verdance Daily Lipstick,5,Makeup,Verdance,Better,39.99,14.55,2020-06-20
+1221,Petal & Pine Radiance Shampoo,5,Haircare,Petal & Pine,Good,9.99,3.83,2022-03-09
+1222,Glowry Overnight Eau de Parfum,5,Fragrance,Glowry,Best,60.99,23.34,2022-12-03
+1223,Lumiere Lab Botanical Moisturiser,5,Skincare,Lumiere Lab,Good,17.99,6.37,2024-12-12
+1224,Verdance Vitamin C Lipstick,5,Makeup,Verdance,Good,10.99,4.17,2020-10-19
+1225,Lumiere Lab Radiance Shampoo,5,Haircare,Lumiere Lab,Better,16.99,7,2019-06-15
+1226,Lumiere Lab Radiance Eau de Parfum,5,Fragrance,Lumiere Lab,Good,40.99,16.32,2021-04-05
+1227,Verdance Hydrating Serum,5,Skincare,Verdance,Better,18.99,7.55,2021-10-15
+1228,Petal & Pine Vitamin C Foundation,5,Makeup,Petal & Pine,Good,19.99,7.18,2022-12-04
+1229,Verdance Botanical Hair Oil,5,Haircare,Verdance,Better,15.99,6.16,2019-03-14
+1230,Glowry Matte Eau de Parfum,5,Fragrance,Glowry,Good,28.99,12,2020-10-02
+1231,Glowry Vitamin C Sunscreen,5,Skincare,Glowry,Good,9.99,3.74,2022-08-06
+1232,Verdance Matte Foundation,5,Makeup,Verdance,Best,53.99,21.35,2019-05-10
+1233,Lumiere Lab Vitamin C Hair Oil,5,Haircare,Lumiere Lab,Good,7.99,3.31,2021-02-10
+1234,Verdance Matte Body Mist,5,Fragrance,Verdance,Best,109.99,38.76,2022-06-13
+1235,Petal & Pine Calming Moisturiser,5,Skincare,Petal & Pine,Best,58.99,22.31,2020-06-29
+1236,Lumiere Lab Botanical Lipstick,5,Makeup,Lumiere Lab,Good,16.99,6.39,2022-09-11
+1237,Glowry Radiance Conditioner,5,Haircare,Glowry,Best,22.99,8.97,2025-09-13
+1238,Verdance Botanical Eau de Parfum,5,Fragrance,Verdance,Better,44.99,16.45,2023-04-22
+1239,Glowry Radiance Sunscreen,5,Skincare,Glowry,Better,28.99,10.2,2020-08-21
+1240,Glowry Overnight Foundation,5,Makeup,Glowry,Better,34.99,12.76,2021-02-12
+1241,Petal & Pine Calming Conditioner,5,Haircare,Petal & Pine,Better,20.99,8.06,2021-12-08
+1242,Verdance Overnight Body Mist,5,Fragrance,Verdance,Best,70.99,27.27,2020-01-29
+1243,Glowry Calming Moisturiser,5,Skincare,Glowry,Best,52.99,19.47,2019-09-13
+1244,Lumiere Lab Radiance Palette,5,Makeup,Lumiere Lab,Better,31.99,11.27,2023-12-29
+1245,Glowry Botanical Shampoo,5,Haircare,Glowry,Best,37.99,13.33,2021-11-22
+1246,Glowry Daily Eau de Parfum,5,Fragrance,Glowry,Good,29.99,10.33,2021-04-30
+1247,Verdance Botanical Sunscreen,5,Skincare,Verdance,Best,69.99,26,2022-11-11
+1248,Verdance Vitamin C Foundation,5,Makeup,Verdance,Best,43.99,17.6,2021-04-29
+1249,Glowry Daily Shampoo,5,Haircare,Glowry,Good,7.99,3.17,2026-04-20
+1250,Petal & Pine Botanical Body Mist,5,Fragrance,Petal & Pine,Better,51.99,18.96,2020-08-30
+1251,Petal & Pine Daily Face Mask,5,Skincare,Petal & Pine,Best,40.99,15.86,2020-03-11
+1252,Verdance Matte Mascara,5,Makeup,Verdance,Good,26.99,9.29,2021-03-31
+1253,Verdance Botanical Conditioner,5,Haircare,Verdance,Good,7.99,3.33,2021-11-01
+1254,Lumiere Lab Calming Eau de Parfum,5,Fragrance,Lumiere Lab,Better,59.99,22.39,2025-06-09
+1255,Verdance Calming Cleanser,5,Skincare,Verdance,Better,20.99,7.67,2019-12-25
+1256,Glowry Matte Mascara,5,Makeup,Glowry,Better,34.99,11.97,2022-10-05
+1257,Lumiere Lab Radiance Conditioner,5,Haircare,Lumiere Lab,Best,39.99,14.22,2019-06-30
+1258,Verdance Daily Body Mist,5,Fragrance,Verdance,Good,39.99,15.48,2019-02-09
+1259,Petal & Pine Hydrating Face Mask,5,Skincare,Petal & Pine,Better,29.99,11.66,2021-06-14
+1260,Petal & Pine Radiance Lipstick,5,Makeup,Petal & Pine,Best,42.99,16.67,2021-06-02
+1261,Petal & Pine Overnight Conditioner,5,Haircare,Petal & Pine,Better,16.99,6.4,2022-07-15
+1262,Verdance Vitamin C Eau de Parfum,5,Fragrance,Verdance,Good,31.99,11.5,2019-01-09
+1263,Glowry Calming Cleanser,5,Skincare,Glowry,Good,9.99,4.11,2025-12-05
+1264,Glowry Hydrating Mascara,5,Makeup,Glowry,Good,17.99,6.3,2020-03-05
+1265,Petal & Pine Overnight Shampoo,5,Haircare,Petal & Pine,Best,23.99,9.22,2020-02-12
+1266,Trailborn Flex Resistance Bands,6,Fitness,Trailborn,Better,18.99,10.01,2021-04-07
+1267,Trailborn Flex Camp Stove,6,Camping,Trailborn,Better,49.99,31.6,2023-12-20
+1268,Trailborn Core Bike Lights,6,Cycling,Trailborn,Best,83.99,52.89,2019-09-23
+1269,Ridgeway Summit Football,6,Team Sports,Ridgeway,Good,13.99,7.77,2020-11-26
+1270,Apexa Aero Dumbbell Set,6,Fitness,Apexa,Best,143.99,86.48,2020-07-20
+1271,Ridgeway Trail Tent,6,Camping,Ridgeway,Best,130.99,77.55,2022-01-29
+1272,Apexa Flex Helmet,6,Cycling,Apexa,Best,81.99,45.49,2021-02-10
+1273,Apexa Flex Basketball,6,Team Sports,Apexa,Best,83.99,48.49,2025-11-30
+1274,Ridgeway All-Weather Kettlebell,6,Fitness,Ridgeway,Good,13.99,8.72,2022-11-22
+1275,Apexa All-Weather Camp Stove,6,Camping,Apexa,Good,22.99,14.18,2021-03-17
+1276,Trailborn Summit Bike Lights,6,Cycling,Trailborn,Good,53.99,33.84,2019-11-11
+1277,Ridgeway Flex Football,6,Team Sports,Ridgeway,Best,85.99,51.98,2021-04-22
+1278,Fitcore Aero Yoga Mat,6,Fitness,Fitcore,Best,95.99,54.69,2021-02-10
+1279,Trailborn Summit Camp Stove,6,Camping,Trailborn,Better,54.99,30.66,2020-03-04
+1280,Apexa Aero Bike Lights,6,Cycling,Apexa,Good,16.99,9.43,2022-02-19
+1281,Ridgeway Trail Tennis Racket,6,Team Sports,Ridgeway,Good,25.99,14.62,2022-11-01
+1282,Apexa Summit Resistance Bands,6,Fitness,Apexa,Good,17.99,10.19,2021-08-20
+1283,Apexa Summit Sleeping Bag,6,Camping,Apexa,Better,123.99,72.12,2020-06-26
+1284,Trailborn Trail Helmet,6,Cycling,Trailborn,Better,71.99,37.67,2019-02-22
+1285,Fitcore Trail Tennis Racket,6,Team Sports,Fitcore,Better,55.99,34.42,2022-01-16
+1286,Ridgeway Trail Resistance Bands,6,Fitness,Ridgeway,Better,20.99,11.31,2021-10-29
+1287,Fitcore Summit Camp Stove,6,Camping,Fitcore,Best,266.99,165.53,2020-09-12
+1288,Ridgeway Aero Bike Lights,6,Cycling,Ridgeway,Good,62.99,37.65,2022-11-28
+1289,Fitcore Flex Tennis Racket,6,Team Sports,Fitcore,Good,16.99,8.94,2022-05-06
+1290,Trailborn Aero Resistance Bands,6,Fitness,Trailborn,Best,78.99,42.62,2020-03-17
+1291,Fitcore All-Weather Sleeping Bag,6,Camping,Fitcore,Better,62.99,36.66,2021-07-11
+1292,Apexa Ultralight Cycling Gloves,6,Cycling,Apexa,Better,71.99,43.83,2019-01-25
+1293,Apexa Aero Football,6,Team Sports,Apexa,Good,14.99,8.9,2024-10-31
+1294,Fitcore Flex Resistance Bands,6,Fitness,Fitcore,Best,97.99,61.31,2021-08-27
+1295,Trailborn All-Weather Sleeping Bag,6,Camping,Trailborn,Good,37.99,20.73,2021-12-10
+1296,Ridgeway Core Bike Lights,6,Cycling,Ridgeway,Good,28.99,15.18,2021-08-29
+1297,Fitcore Summit Basketball,6,Team Sports,Fitcore,Better,32.99,20.87,2020-06-29
+1298,Ridgeway Flex Yoga Mat,6,Fitness,Ridgeway,Better,50.99,30.22,2022-09-02
+1299,Fitcore All-Weather Camp Stove,6,Camping,Fitcore,Best,291.99,161.5,2022-08-24
+1300,Trailborn All-Weather Bike Lights,6,Cycling,Trailborn,Better,63.99,35.74,2020-04-14
+1301,Apexa Flex Tennis Racket,6,Team Sports,Apexa,Best,81.99,47.15,2019-01-21
+1302,Ridgeway Aero Dumbbell Set,6,Fitness,Ridgeway,Good,16.99,9.81,2021-03-19
+1303,Fitcore Core Sleeping Bag,6,Camping,Fitcore,Good,35.99,19.7,2019-05-17
+1304,Apexa Trail Helmet,6,Cycling,Apexa,Better,66.99,37.12,2023-03-06
+1305,Apexa Trail Football,6,Team Sports,Apexa,Better,54.99,31.97,2019-09-24
+1306,Apexa Summit Dumbbell Set,6,Fitness,Apexa,Good,13.99,8.07,2022-09-26
+1307,Ridgeway Core Tent,6,Camping,Ridgeway,Good,24.99,15.23,2022-01-05
+1308,Ridgeway Trail Bike Lights,6,Cycling,Ridgeway,Best,86.99,53.4,2022-10-11
+1309,Trailborn Flex Tennis Racket,6,Team Sports,Trailborn,Better,33.99,19.07,2021-02-25
+1310,Fitcore Aero Dumbbell Set,6,Fitness,Fitcore,Better,32.99,20.31,2019-04-25
+1311,Brightbox Explorer Marble Run,7,Building,Brightbox,Best,82.99,45,2024-11-09
+1312,Brightbox Explorer Board Game,7,Games,Brightbox,Good,11.99,6.78,2020-07-24
+1313,Tinker & Co Classic Water Blaster,7,Outdoor,Tinker & Co,Good,23.99,15.58,2022-01-06
+1314,Tinker & Co Classic Plush Bear,7,Plush,Tinker & Co,Best,21.99,13.75,2019-07-21
+1315,Playforge Mega Block Set,7,Building,Playforge,Better,56.99,35.96,2020-07-13
+1316,Tinker & Co Classic Card Game,7,Games,Tinker & Co,Good,17.99,11.11,2020-11-06
+1317,Playforge Mega Kite,7,Outdoor,Playforge,Best,89.99,53.68,2022-05-07
+1318,Playforge Wooden Plush Bear,7,Plush,Playforge,Good,16.99,11.13,2020-06-29
+1319,Tinker & Co Deluxe Construction Kit,7,Building,Tinker & Co,Good,45.99,27.95,2024-07-22
+1320,Brightbox Classic Board Game,7,Games,Brightbox,Best,47.99,26.75,2021-01-30
+1321,Brightbox Wooden Water Blaster,7,Outdoor,Brightbox,Good,25.99,15.15,2019-11-29
+1322,Tinker & Co Wooden Plush Bear,7,Plush,Tinker & Co,Good,12.99,7.59,2019-02-15
+1323,Brightbox Deluxe Block Set,7,Building,Brightbox,Better,45.99,26.52,2021-05-11
+1324,Brightbox Deluxe Card Game,7,Games,Brightbox,Better,26.99,14.91,2019-04-11
+1325,Brightbox Deluxe Water Blaster,7,Outdoor,Brightbox,Good,23.99,14.14,2021-08-07
+1326,Tinker & Co Mega Plush Dragon,7,Plush,Tinker & Co,Best,28.99,17.19,2022-08-06
+1327,Tinker & Co Mega Block Set,7,Building,Tinker & Co,Best,82.99,54.23,2026-04-14
+1328,Tinker & Co Junior Board Game,7,Games,Tinker & Co,Best,27.99,17.59,2024-07-22
+1329,Brightbox Junior Kite,7,Outdoor,Brightbox,Best,86.99,55.27,2020-03-09
+1330,Brightbox Classic Plush Dragon,7,Plush,Brightbox,Good,15.99,9,2021-05-24
+1331,Brightbox Junior Block Set,7,Building,Brightbox,Good,15.99,9.7,2024-07-23
+1332,Playforge Classic Board Game,7,Games,Playforge,Good,19.99,12.48,2020-03-11
+1333,Playforge Mega Scooter,7,Outdoor,Playforge,Better,74.99,41.94,2025-05-17
+1334,Tinker & Co Classic Plush Dragon,7,Plush,Tinker & Co,Better,19.99,11.52,2019-06-05
+1335,Brightbox Wooden Marble Run,7,Building,Brightbox,Good,20.99,12.71,2020-03-27
+1336,Playforge Wooden Card Game,7,Games,Playforge,Better,21.99,13.36,2023-11-15
+1337,Tinker & Co Junior Scooter,7,Outdoor,Tinker & Co,Better,69.99,45.3,2022-08-08
+1338,Brightbox Deluxe Plush Dragon,7,Plush,Brightbox,Better,16.99,10.54,2021-09-02
+1339,Tinker & Co Wooden Block Set,7,Building,Tinker & Co,Better,51.99,31.58,2020-10-25
+1340,Tinker & Co Explorer Card Game,7,Games,Tinker & Co,Good,17.99,10.88,2019-10-28
+1341,Playforge Classic Kite,7,Outdoor,Playforge,Best,82.99,51.3,2019-02-13
+1342,Brightbox Junior Plush Dragon,7,Plush,Brightbox,Good,12.99,8.04,2019-08-29
+1343,Tinker & Co Classic Marble Run,7,Building,Tinker & Co,Good,24.99,14.06,2019-03-14
+1344,Brightbox Wooden Puzzle 1000pc,7,Games,Brightbox,Better,23.99,15.16,2022-12-29
+1345,Tinker & Co Mega Water Blaster,7,Outdoor,Tinker & Co,Good,32.99,19.65,2022-09-06
+1346,Tinker & Co Explorer Plush Bear,7,Plush,Tinker & Co,Best,30.99,18.16,2021-10-20
+1347,Tinker & Co Wooden Marble Run,7,Building,Tinker & Co,Best,117.99,65.63,2021-08-01
+1348,Tinker & Co Junior Puzzle 1000pc,7,Games,Tinker & Co,Best,26.99,14.72,2022-10-11
+1349,Brightbox Deluxe Kite,7,Outdoor,Brightbox,Better,34.99,19.22,2021-05-17
+1350,Tinker & Co Deluxe Plush Bear,7,Plush,Tinker & Co,Better,19.99,12.09,2022-07-13
+1351,Carryall Leather Weekender,8,Bags,Carryall,Best,147.99,54.44,2019-07-31
+1352,Carryall Travel Wallet,8,Small Leather,Carryall,Best,52.99,22.61,2019-08-31
+1353,Carryall Travel Earrings,8,Jewellery,Carryall,Better,26.99,11.83,2023-11-30
+1354,Solace Travel Sunglasses,8,Eyewear,Solace,Best,105.99,39.19,2021-08-19
+1355,Carryall Leather Tote,8,Bags,Carryall,Better,131.99,51.64,2024-08-28
+1356,Solace Minimal Belt,8,Small Leather,Solace,Better,45.99,18.48,2021-01-16
+1357,Marlow Everyday Necklace,8,Jewellery,Marlow,Good,20.99,9.08,2020-08-02
+1358,Marlow Travel Reading Glasses,8,Eyewear,Marlow,Better,26.99,9.75,2022-03-22
+1359,Marlow Vintage Crossbody,8,Bags,Marlow,Good,78.99,29.58,2022-05-26
+1360,Carryall Everyday Wallet,8,Small Leather,Carryall,Best,74.99,31.91,2019-05-28
+1361,Ledgerline Leather Earrings,8,Jewellery,Ledgerline,Best,52.99,19.76,2020-05-27
+1362,Solace Vintage Sunglasses,8,Eyewear,Solace,Better,35.99,15.01,2019-03-17
+1363,Ledgerline Canvas Crossbody,8,Bags,Ledgerline,Better,129.99,56.85,2026-06-19
+1364,Ledgerline Vintage Card Holder,8,Small Leather,Ledgerline,Good,24.99,10.62,2020-03-04
+1365,Marlow Minimal Bracelet,8,Jewellery,Marlow,Best,64.99,25.45,2019-11-09
+1366,Carryall Leather Reading Glasses,8,Eyewear,Carryall,Best,65.99,26.24,2020-07-13
+1367,Carryall Vintage Weekender,8,Bags,Carryall,Good,90.99,39.95,2020-02-27
+1368,Carryall Travel Belt,8,Small Leather,Carryall,Better,40.99,15.31,2022-09-02
+1369,Solace Leather Earrings,8,Jewellery,Solace,Better,41.99,15.9,2019-10-24
+1370,Carryall Leather Sunglasses,8,Eyewear,Carryall,Better,26.99,9.89,2021-03-25
+1371,Ledgerline Canvas Tote,8,Bags,Ledgerline,Best,168.99,68.85,2020-10-17
+1372,Marlow Canvas Wallet,8,Small Leather,Marlow,Better,34.99,15.35,2019-12-04
+1373,Ledgerline Minimal Necklace,8,Jewellery,Ledgerline,Better,35.99,15.23,2020-10-27
+1374,Ledgerline Travel Sunglasses,8,Eyewear,Ledgerline,Good,18.99,7.95,2019-07-08
+1375,Solace Minimal Tote,8,Bags,Solace,Better,108.99,39.4,2020-09-07
+1376,Ledgerline Everyday Belt,8,Small Leather,Ledgerline,Better,42.99,18.37,2020-09-22
+1377,Marlow Leather Earrings,8,Jewellery,Marlow,Best,92.99,40.86,2024-09-20
+1378,Marlow Canvas Reading Glasses,8,Eyewear,Marlow,Best,48.99,21.5,2022-08-28
+1379,Marlow Travel Weekender,8,Bags,Marlow,Better,100.99,36.81,2019-02-15
+1380,Carryall Leather Wallet,8,Small Leather,Carryall,Best,82.99,36.06,2020-06-25
+1381,Ledgerline Everyday Earrings,8,Jewellery,Ledgerline,Good,13.99,5.14,2019-05-19
+1382,Ledgerline Everyday Reading Glasses,8,Eyewear,Ledgerline,Good,17.99,7.37,2025-12-14
+1383,Solace Everyday Backpack,8,Bags,Solace,Good,57.99,21.31,2022-02-22
+1384,Carryall Minimal Belt,8,Small Leather,Carryall,Good,17.99,6.78,2020-08-02
+1385,Ledgerline Vintage Bracelet,8,Jewellery,Ledgerline,Better,24.99,9.62,2021-05-20
+1386,Ledgerline Vintage Reading Glasses,8,Eyewear,Ledgerline,Best,46.99,18.63,2021-10-29
+1387,Solace Everyday Crossbody,8,Bags,Solace,Best,150.99,64.66,2019-08-22
+1388,Ledgerline Leather Card Holder,8,Small Leather,Ledgerline,Good,24.99,10.41,2022-11-11
+1389,Marlow Vintage Earrings,8,Jewellery,Marlow,Good,12.99,5.06,2021-03-17
+1390,Ledgerline Leather Reading Glasses,8,Eyewear,Ledgerline,Good,21.99,8.55,2023-04-03
+1391,Marlow Travel Crossbody,8,Bags,Marlow,Best,147.99,62.15,2019-03-09
+1392,Ledgerline Leather Belt,8,Small Leather,Ledgerline,Good,30.99,12.12,2019-09-22
+1393,Marlow Travel Earrings,8,Jewellery,Marlow,Best,61.99,23.58,2021-06-25
+1394,Ledgerline Leather Sunglasses,8,Eyewear,Ledgerline,Better,24.99,9.71,2019-04-18
+1395,Marlow Leather Crossbody,8,Bags,Marlow,Good,85.99,33.34,2024-08-09
+1396,Solace Vintage Belt,8,Small Leather,Solace,Best,73.99,28.67,2021-02-26
+1397,Solace Minimal Bracelet,8,Jewellery,Solace,Good,19.99,8.24,2019-02-15
+1398,Solace Minimal Sunglasses,8,Eyewear,Solace,Good,20.99,8.87,2025-05-23
+1399,Solace Canvas Crossbody,8,Bags,Solace,Good,58.99,25.33,2019-03-13
+1400,Ledgerline Minimal Card Holder,8,Small Leather,Ledgerline,Good,27.99,11.78,2024-12-14

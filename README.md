@@ -62,3 +62,7 @@ npx pbiviz package    # dist/*.pbiviz
 ```
 
 Then `node scripts/build-post5.mjs` registers the newest package from `dist/` in the report, the same way Desktop does when you import a visual from a file and save. Restart Desktop to load a new version.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE). Use, copy and adapt freely.

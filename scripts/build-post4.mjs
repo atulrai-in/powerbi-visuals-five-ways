@@ -6,6 +6,11 @@ import { fileURLToPath } from 'node:url';
 import { id, col, M, proj, str, num, bool, color, card, inFilter, notInFilter, writePage } from './pbir.mjs';
 import { denebVisual, registerDeneb } from './deneb.mjs';
 
+// The data starts 1 Jan 2023, so these have no "last year" to compare with (their % would divide by zero).
+// The slicer hides them; the chart also shows "n/a" for any phase without a full year before it.
+const NO_LY = ['No Promotion', 'New Year Sale 2023', 'Spring Beauty Week 2023', 'Summer Sports Fest 2023', 'Back to School 2023',
+  'Toy Days 2023', 'Black Friday 2023', 'Online Flash Sale Spring 2023', 'Online Flash Sale Autumn 2023', 'New Year Sale 2024'];
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const REPORT = path.join(ROOT, 'Brightvale Retail.Report');
 const INK = '#1E3A5F', MUTED = '#6B7280', BG = '#F3F4F6';
@@ -59,7 +64,7 @@ const visuals = [
       items: [{ properties: { fontColor: color(INK), textSize: num(13) } }],
     },
     container: card(),
-    filterConfig: { filters: [notInFilter(v('f-nopromo'), 'Promotions', 'PromotionName', ["'No Promotion'"])] },
+    filterConfig: { filters: [notInFilter(v('f-nopromo'), 'Promotions', 'PromotionName', NO_LY.map(n => `'${n}'`))] },
   },
   textbox('howto', 1500, 220, 380, 328, [
     para(textRun('Try it', { fontWeight: 'bold', fontSize: '14pt', color: INK })),
@@ -68,7 +73,7 @@ const visuals = [
     gap(),
     para(b('Hover the curve'), textRun(': the readout follows your pointer, "Top 10% → 44%".')),
     gap(),
-    para(b('Pick a promotion'), textRun(': the bottom chart redraws for any of the 34 promotions, compared with the same weekdays last year.')),
+    para(b('Pick a promotion'), textRun(': the bottom chart redraws for any promotion from 2024 on, compared with the same weekdays a year earlier.')),
   ]),
   textbox('trick', 1500, 564, 380, 496, [
     para(textRun('What it says', { fontWeight: 'bold', fontSize: '14pt', color: INK })),
@@ -85,6 +90,7 @@ const visuals = [
     code('  "value": 0.25}, "value": 1}'),
   ]),
 ];
+
 
 // The promotion slicer drives the bottom chart only (Format > Edit interactions > None on the top two).
 // A tier click highlights the Pareto (other tiers fade) and filters the promo chart.

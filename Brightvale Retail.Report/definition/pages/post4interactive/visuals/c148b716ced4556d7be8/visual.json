@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
   "name": "c148b716ced4556d7be8",
   "position": {
     "x": 656,
     "y": 108,
     "z": 2000,
-    "height": 440,
     "width": 824,
+    "height": 440,
     "tabOrder": 2000
   },
   "visual": {
@@ -138,47 +138,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'2.0.1.0'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "stateManagement": [
-        {
-          "properties": {
-            "viewportHeight": {
-              "expr": {
-                "Literal": {
-                  "Value": "381D"
-                }
-              }
-            },
-            "viewportWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "794D"
-                }
-              }
-            },
-            "supportFieldConfiguration": {
-              "expr": {
-                "Literal": {
-                  "Value": "'{\"CustomerID\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"LoyaltyTier\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"Net Sales\":{\"highlight\":true,\"highlightStatus\":true,\"highlightComparator\":true,\"format\":true,\"formatted\":true,\"names\":false}}'"
-                }
-              }
-            },
-            "denebMetaVersion": {
-              "expr": {
-                "Literal": {
-                  "Value": "'2'"
-                }
-              }
-            },
-            "consolidateFieldParameters": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
                 }
               }
             }

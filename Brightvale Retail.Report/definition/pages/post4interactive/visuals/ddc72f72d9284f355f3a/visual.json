@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
   "name": "ddc72f72d9284f355f3a",
   "position": {
     "x": 1500,
     "y": 108,
     "z": 4000,
-    "height": 96,
     "width": 380,
+    "height": 96,
     "tabOrder": 4000
   },
   "visual": {
@@ -27,8 +27,7 @@
                 }
               },
               "queryRef": "Promotions.PromotionName",
-              "nativeQueryRef": "PromotionName",
-              "active": true
+              "nativeQueryRef": "PromotionName"
             }
           ]
         }
@@ -424,6 +423,69 @@
                           {
                             "Literal": {
                               "Value": "'No Promotion'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'New Year Sale 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Spring Beauty Week 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Summer Sports Fest 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Back to School 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Toy Days 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Black Friday 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Online Flash Sale Spring 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Online Flash Sale Autumn 2023'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'New Year Sale 2024'"
                             }
                           }
                         ]

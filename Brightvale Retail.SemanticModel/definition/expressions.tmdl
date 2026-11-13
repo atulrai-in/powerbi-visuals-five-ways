@@ -1,5 +1,4 @@
 expression DataFolder = "D:\Projects\Claude\Foundry\PBI Claude visual\data\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
-	lineageTag: 84eb7d2a-5d32-4d49-820b-ace5852d98cc
 
 	annotation PBI_ResultType = Text
 

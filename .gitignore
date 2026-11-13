@@ -14,3 +14,8 @@ posts/**/*.md
 posts/**/*-full.png
 posts/**/*.pbiviz
 posts/**/*.mp4
+
+# Org Pulse: compiled prototype and draft stills
+visuals/*/prototype/build/
+posts/**/*-draft.png
+posts/**/*-v0*.png

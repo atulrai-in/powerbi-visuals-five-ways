@@ -1,23 +1,18 @@
 table Calendar
-	lineageTag: f76994d8-4e16-47f8-96a5-182dae39e54d
 	dataCategory: Time
 
 	column Date
 		dataType: dateTime
 		isKey
 		formatString: yyyy-mm-dd
-		lineageTag: 8b271aa1-f885-404f-832c-492eab1521b6
 		summarizeBy: none
 		sourceColumn: Date
 
 		annotation SummarizationSetBy = User
 
-		annotation UnderlyingDateTimeDataType = Date
-
 	column Year
 		dataType: int64
 		formatString: 0
-		lineageTag: 523b5bbb-cdb3-47b8-a93b-6450dbafed9b
 		summarizeBy: none
 		sourceColumn: Year
 
@@ -25,7 +20,6 @@ table Calendar
 
 	column Quarter
 		dataType: string
-		lineageTag: 7a60c920-91b1-4498-a2e8-89a8ab32cec6
 		summarizeBy: none
 		sourceColumn: Quarter
 
@@ -35,7 +29,6 @@ table Calendar
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: daf487fe-7539-4697-9862-9ca70ec78102
 		summarizeBy: none
 		sourceColumn: MonthNo
 
@@ -43,7 +36,6 @@ table Calendar
 
 	column MonthName
 		dataType: string
-		lineageTag: 9824e62c-0c03-41f6-87fa-9cf6a9264438
 		summarizeBy: none
 		sourceColumn: MonthName
 		sortByColumn: MonthNo
@@ -52,7 +44,6 @@ table Calendar
 
 	column MonthShort
 		dataType: string
-		lineageTag: 5a40c407-3cfc-45ee-b99e-3ce7516f473f
 		summarizeBy: none
 		sourceColumn: MonthShort
 		sortByColumn: MonthNo
@@ -63,7 +54,6 @@ table Calendar
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: c2355bed-eb5f-49ad-9a26-10677fbc4653
 		summarizeBy: none
 		sourceColumn: YearMonth
 
@@ -71,7 +61,6 @@ table Calendar
 
 	column MonthYear
 		dataType: string
-		lineageTag: 85f5235a-1869-446f-9d30-0ed4ea218fb6
 		summarizeBy: none
 		sourceColumn: MonthYear
 		sortByColumn: YearMonth
@@ -81,7 +70,6 @@ table Calendar
 	column DayOfMonth
 		dataType: int64
 		formatString: 0
-		lineageTag: 6d1efead-5d9b-458a-a942-896d07e2b2dc
 		summarizeBy: none
 		sourceColumn: DayOfMonth
 
@@ -90,7 +78,6 @@ table Calendar
 	column ISOWeek
 		dataType: int64
 		formatString: 0
-		lineageTag: 049424e5-36eb-4f19-8175-4745a5f5e932
 		summarizeBy: none
 		sourceColumn: ISOWeek
 
@@ -100,7 +87,6 @@ table Calendar
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: a5a15d19-0442-43cb-a3b8-e7b37068deec
 		summarizeBy: none
 		sourceColumn: WeekdayNo
 
@@ -108,7 +94,6 @@ table Calendar
 
 	column WeekdayName
 		dataType: string
-		lineageTag: 4e0d7765-3663-45de-9e15-aa7e68c6e5de
 		summarizeBy: none
 		sourceColumn: WeekdayName
 		sortByColumn: WeekdayNo
@@ -117,7 +102,6 @@ table Calendar
 
 	column WeekdayShort
 		dataType: string
-		lineageTag: 344bbba4-bdc3-4600-a8fa-f4c4d8a42a66
 		summarizeBy: none
 		sourceColumn: WeekdayShort
 		sortByColumn: WeekdayNo
@@ -127,7 +111,6 @@ table Calendar
 	column IsWeekend
 		dataType: int64
 		formatString: 0
-		lineageTag: 87f56da1-eedc-4d89-8d94-b7757760bed8
 		summarizeBy: none
 		sourceColumn: IsWeekend
 
@@ -135,7 +118,6 @@ table Calendar
 
 	column RetailEvent
 		dataType: string
-		lineageTag: 062c7ac3-291f-4ad1-92b0-cac08282cc61
 		summarizeBy: none
 		sourceColumn: RetailEvent
 
@@ -143,7 +125,6 @@ table Calendar
 
 	column FiscalYear
 		dataType: string
-		lineageTag: 592c6eaf-7803-4862-a1f6-5c4a7a9da2a1
 		summarizeBy: none
 		sourceColumn: FiscalYear
 
@@ -152,7 +133,6 @@ table Calendar
 	column FiscalMonthNo
 		dataType: int64
 		formatString: 0
-		lineageTag: e069c5a3-4d73-4f0c-84fa-9c92b9a60501
 		summarizeBy: none
 		sourceColumn: FiscalMonthNo
 
@@ -161,7 +141,6 @@ table Calendar
 	column HasActuals
 		dataType: int64
 		formatString: 0
-		lineageTag: 9ecd2ae9-5a34-4f9b-b765-e2e12cc80456
 		summarizeBy: none
 		sourceColumn: HasActuals
 

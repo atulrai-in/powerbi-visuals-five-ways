@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "es2022",
+        "moduleResolution": "node",
+        "lib": ["es2022", "dom"],
+        "rootDir": "./src/core",
+        "outDir": "./prototype/build",
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "declaration": false
+    },
+    "files": ["./src/core/view.ts"]
+}

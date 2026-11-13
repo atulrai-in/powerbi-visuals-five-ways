@@ -1,0 +1,131 @@
+table OrgTimeline
+
+	column RowID
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: RowID
+
+		annotation SummarizationSetBy = User
+
+	column PositionID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: PositionID
+
+		annotation SummarizationSetBy = User
+
+	column ReportsToPositionID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ReportsToPositionID
+
+		annotation SummarizationSetBy = User
+
+	column TeamID
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: TeamID
+
+		annotation SummarizationSetBy = User
+
+	column PersonID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: PersonID
+
+		annotation SummarizationSetBy = User
+
+	column ValidFrom
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: ValidFrom
+
+		annotation SummarizationSetBy = User
+
+	column ValidTo
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: ValidTo
+
+		annotation SummarizationSetBy = User
+
+	column Status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = User
+
+	column ChangeReason
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ChangeReason
+
+		annotation SummarizationSetBy = User
+
+	column FTE
+		dataType: double
+		formatString: 0.00
+		summarizeBy: none
+		sourceColumn: FTE
+
+		annotation SummarizationSetBy = User
+
+	column AnnualCost
+		dataType: decimal
+		formatString: $#,0
+		summarizeBy: none
+		sourceColumn: AnnualCost
+
+		annotation SummarizationSetBy = User
+
+	column 'Person Name' = RELATED ( People[PersonName] )
+		dataType: string
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column 'Team Name' = RELATED ( Teams[TeamName] )
+		dataType: string
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column Region = RELATED ( Teams[Region] )
+		dataType: string
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column Title = RELATED ( Positions[Title] )
+		dataType: string
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column 'Target Span' = RELATED ( Positions[TargetSpan] )
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition OrgTimeline = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "OrgTimeline.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"RowID", Int64.Type}, {"PositionID", Int64.Type}, {"ReportsToPositionID", Int64.Type}, {"TeamID", Int64.Type}, {"PersonID", Int64.Type}, {"ValidFrom", type date}, {"ValidTo", type date}, {"Status", type text}, {"ChangeReason", type text}, {"FTE", type number}, {"AnnualCost", Currency.Type}}, "en-US")
+				in
+				    Typed
+

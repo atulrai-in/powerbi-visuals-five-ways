@@ -62,3 +62,27 @@ relationship b8342d2d-aeba-089d-77fa-7dab7ab5ae15
 	fromColumn: Products.CategoryID
 	toColumn: Categories.CategoryID
 
+relationship 801dcd0b-6947-635b-4127-0bbc186d2893
+	fromColumn: OrgTimeline.PersonID
+	toColumn: People.PersonID
+
+relationship fce69cd4-0d1c-fdeb-9db0-ebb8c27b6d98
+	fromColumn: OrgTimeline.PositionID
+	toColumn: Positions.PositionID
+
+relationship 2ebd62f1-3b0b-9412-6fc7-c973c74a45f7
+	fromColumn: OrgTimeline.TeamID
+	toColumn: Teams.TeamID
+
+relationship ab8d58fa-be7c-6797-964e-05c4b083a276
+	fromColumn: Teams.StoreID
+	toColumn: Stores.StoreID
+
+relationship 821d3928-8d02-96a6-495a-12c24ec577f0
+	fromColumn: Movements.PersonID
+	toColumn: People.PersonID
+
+relationship 301d7204-b495-8304-ce2d-f5e738b82fe5
+	fromColumn: Movements.MoveDate
+	toColumn: Calendar.Date
+

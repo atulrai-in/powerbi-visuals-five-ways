@@ -1,23 +1,26 @@
 table 'Store Scope'
-	lineageTag: 47dcc15d-22d3-421a-94ac-243e45708baa
 
 	calculationGroup
 		precedence: 10
 
 		calculationItem 'All stores' = SELECTEDMEASURE()
+			ordinal: 0
 
-		calculationItem Like-for-like =
+		calculationItem 'Like-for-like' = ```
 				-- stores open at least 12 months before the period starts
 				VAR _cutoff = EDATE(MIN('Calendar'[Date]), -12)
 				RETURN CALCULATE(SELECTEDMEASURE(), KEEPFILTERS(Stores[OpenDate] <= _cutoff))
+				```
+			ordinal: 1
 
-		calculationItem 'New stores' =
+		calculationItem 'New stores' = ```
 				VAR _cutoff = EDATE(MIN('Calendar'[Date]), -12)
 				RETURN CALCULATE(SELECTEDMEASURE(), KEEPFILTERS(Stores[OpenDate] > _cutoff))
+				```
+			ordinal: 2
 
 	column 'Store Scope'
 		dataType: string
-		lineageTag: fb67d34f-1d1b-4cbf-a5a4-7c5b47d6348a
 		summarizeBy: none
 		sourceColumn: Name
 		sortByColumn: Ordinal
@@ -28,7 +31,6 @@ table 'Store Scope'
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 49fc7eca-4188-4459-af74-a61c0f1a8c80
 		summarizeBy: sum
 		sourceColumn: Ordinal
 

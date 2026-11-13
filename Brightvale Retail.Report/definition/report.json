@@ -51,6 +51,17 @@
           "type": "CustomVisualMetadata"
         }
       ]
+    },
+    {
+      "name": "orgPulseF3E708682B184C7AB48CDD039D8796FB",
+      "type": "CustomVisual",
+      "items": [
+        {
+          "name": "orgPulseF3E708682B184C7AB48CDD039D8796FB.pbiviz.json",
+          "path": "orgPulseF3E708682B184C7AB48CDD039D8796FB.pbiviz.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
     }
   ],
   "settings": {

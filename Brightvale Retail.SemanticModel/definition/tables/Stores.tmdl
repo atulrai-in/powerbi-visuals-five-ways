@@ -1,10 +1,8 @@
 table Stores
-	lineageTag: d1b092be-0732-452e-9999-0a81fd2b3df1
 
 	column StoreID
 		dataType: int64
 		formatString: 0
-		lineageTag: 72ea7fca-324d-4cba-b6a4-968d9f66a2b8
 		summarizeBy: none
 		sourceColumn: StoreID
 
@@ -12,7 +10,6 @@ table Stores
 
 	column StoreName
 		dataType: string
-		lineageTag: 7e50cacd-d86c-48d6-89b8-9a19e95a7903
 		summarizeBy: none
 		sourceColumn: StoreName
 
@@ -20,7 +17,6 @@ table Stores
 
 	column City
 		dataType: string
-		lineageTag: d58f0f9e-20ff-4cb6-b433-a0a16941d772
 		dataCategory: City
 		summarizeBy: none
 		sourceColumn: City
@@ -29,7 +25,6 @@ table Stores
 
 	column State
 		dataType: string
-		lineageTag: d13e26de-7126-4179-9f7e-42d172679f3a
 		dataCategory: StateOrProvince
 		summarizeBy: none
 		sourceColumn: State
@@ -38,7 +33,6 @@ table Stores
 
 	column Region
 		dataType: string
-		lineageTag: 4871a639-5294-46fe-8f10-147390283468
 		summarizeBy: none
 		sourceColumn: Region
 
@@ -46,7 +40,6 @@ table Stores
 
 	column Format
 		dataType: string
-		lineageTag: bf1ed202-a7d6-461d-a0ab-e57ddccc8817
 		summarizeBy: none
 		sourceColumn: Format
 
@@ -55,18 +48,14 @@ table Stores
 	column OpenDate
 		dataType: dateTime
 		formatString: yyyy-mm-dd
-		lineageTag: ae5a3736-d59d-48e9-8c0f-86574afb69c8
 		summarizeBy: none
 		sourceColumn: OpenDate
 
 		annotation SummarizationSetBy = User
 
-		annotation UnderlyingDateTimeDataType = Date
-
 	column SquareFeet
 		dataType: int64
 		formatString: #,0
-		lineageTag: 133cb78f-8319-478f-bb99-54347e5c598b
 		summarizeBy: none
 		sourceColumn: SquareFeet
 
@@ -75,7 +64,6 @@ table Stores
 	column Latitude
 		dataType: double
 		formatString: 0.0000
-		lineageTag: 27c8fe52-1cbf-4302-bcbe-1c4da1ae8dfc
 		dataCategory: Latitude
 		summarizeBy: none
 		sourceColumn: Latitude
@@ -85,7 +73,6 @@ table Stores
 	column Longitude
 		dataType: double
 		formatString: 0.0000
-		lineageTag: e383f5b2-d894-4766-8b66-2d1272898432
 		dataCategory: Longitude
 		summarizeBy: none
 		sourceColumn: Longitude
@@ -94,7 +81,6 @@ table Stores
 
 	column StoreManager
 		dataType: string
-		lineageTag: 2b82975b-02e9-435e-b0f2-35fd23c4d488
 		summarizeBy: none
 		sourceColumn: StoreManager
 

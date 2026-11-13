@@ -1,10 +1,8 @@
 table Products
-	lineageTag: d009b7ba-ae53-456e-9eac-64d2c6009284
 
 	column ProductID
 		dataType: int64
 		formatString: 0
-		lineageTag: ea0ef50d-6a61-406a-8d11-30fa8e701a27
 		summarizeBy: none
 		sourceColumn: ProductID
 
@@ -12,7 +10,6 @@ table Products
 
 	column ProductName
 		dataType: string
-		lineageTag: 0c302b8d-1113-47a8-bf71-e2388eabc370
 		summarizeBy: none
 		sourceColumn: ProductName
 
@@ -22,7 +19,6 @@ table Products
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: a2478662-6a59-4e96-b209-6bebac6a52c3
 		summarizeBy: none
 		sourceColumn: CategoryID
 
@@ -30,7 +26,6 @@ table Products
 
 	column Subcategory
 		dataType: string
-		lineageTag: 60f0623e-d579-4c2a-b5e5-12812f2b1cbe
 		summarizeBy: none
 		sourceColumn: Subcategory
 
@@ -38,7 +33,6 @@ table Products
 
 	column Brand
 		dataType: string
-		lineageTag: daa5acf9-bca6-4fa3-af45-0b28da4e7666
 		summarizeBy: none
 		sourceColumn: Brand
 
@@ -46,7 +40,6 @@ table Products
 
 	column PriceTier
 		dataType: string
-		lineageTag: 0776311e-96b3-4293-a65a-295b3712575c
 		summarizeBy: none
 		sourceColumn: PriceTier
 		sortByColumn: PriceTierOrder
@@ -56,7 +49,6 @@ table Products
 	column ListPrice
 		dataType: decimal
 		formatString: $#,0.00
-		lineageTag: 27095ab5-7cf2-4e2d-95f4-81ef9fc058c6
 		summarizeBy: none
 		sourceColumn: ListPrice
 
@@ -65,7 +57,6 @@ table Products
 	column UnitCost
 		dataType: decimal
 		formatString: $#,0.00
-		lineageTag: a0d09f4b-e34b-4789-907b-034fe9a46165
 		summarizeBy: none
 		sourceColumn: UnitCost
 
@@ -74,19 +65,15 @@ table Products
 	column LaunchDate
 		dataType: dateTime
 		formatString: yyyy-mm-dd
-		lineageTag: 052b1bd4-d247-4f94-8fa3-509930fae6a1
 		summarizeBy: none
 		sourceColumn: LaunchDate
 
 		annotation SummarizationSetBy = User
 
-		annotation UnderlyingDateTimeDataType = Date
-
 	column PriceTierOrder
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: a1f75b25-1842-4b1d-be1c-e71cb000c6ef
 		summarizeBy: none
 		sourceColumn: PriceTierOrder
 

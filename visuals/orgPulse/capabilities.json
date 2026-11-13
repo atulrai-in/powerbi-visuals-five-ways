@@ -1,0 +1,314 @@
+{
+    "dataRoles": [
+        {
+            "name": "position",
+            "displayName": "Position ID",
+            "kind": "Grouping",
+            "description": "The seat each row describes (or the person, if you have no positions). Required."
+        },
+        {
+            "name": "reportsTo",
+            "displayName": "Reports to ID",
+            "kind": "Grouping",
+            "description": "The seat (or person) this one reports to. Blank for the top of the org."
+        },
+        {
+            "name": "person",
+            "displayName": "Person ID",
+            "kind": "Grouping",
+            "description": "Who sits in the seat. Blank means an open role."
+        },
+        {
+            "name": "name",
+            "displayName": "Name",
+            "kind": "Grouping",
+            "description": "Person name shown on nodes and cards"
+        },
+        {
+            "name": "validFrom",
+            "displayName": "Valid from",
+            "kind": "Grouping",
+            "description": "First day this row applies. Leave empty for a static org chart."
+        },
+        {
+            "name": "validTo",
+            "displayName": "Valid to",
+            "kind": "Grouping",
+            "description": "Last day this row applies. Blank means it still applies."
+        },
+        {
+            "name": "team",
+            "displayName": "Team",
+            "kind": "Grouping",
+            "description": "Groups people into clusters"
+        },
+        {
+            "name": "group",
+            "displayName": "Colour by",
+            "kind": "Grouping",
+            "description": "Region, function or department: sets the colour"
+        },
+        {
+            "name": "title",
+            "displayName": "Role",
+            "kind": "Grouping",
+            "description": "Job title shown under the name"
+        },
+        {
+            "name": "status",
+            "displayName": "Status",
+            "kind": "Grouping",
+            "description": "Filled, Open or On leave (optional: inferred from Person ID)"
+        },
+        {
+            "name": "reason",
+            "displayName": "Change reason",
+            "kind": "Grouping",
+            "description": "Why the row starts: Hire, Transfer, Promotion, Reorg... (optional: inferred)"
+        },
+        {
+            "name": "fte",
+            "displayName": "FTE",
+            "kind": "Grouping",
+            "description": "Full-time equivalent of the seat (default 1)"
+        },
+        {
+            "name": "cost",
+            "displayName": "Annual cost",
+            "kind": "Grouping",
+            "description": "Optional: annual cost of the person in the seat"
+        },
+        {
+            "name": "targetSpan",
+            "displayName": "Target span",
+            "kind": "Grouping",
+            "description": "Optional: most direct reports this seat should have"
+        },
+        {
+            "name": "asOfPage",
+            "displayName": "Page as-of date",
+            "kind": "Measure",
+            "description": "Optional: a measure returning the date the rest of the page is showing, e.g. MAX('As Of'[As Of Date])"
+        }
+    ],
+    "objects": {
+        "general": {
+            "properties": {
+                "filter": {
+                    "type": {
+                        "filter": true
+                    }
+                }
+            }
+        },
+        "sync": {
+            "properties": {
+                "enabled": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "table": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "column": {
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        },
+        "display": {
+            "properties": {
+                "theme": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "dark",
+                                "displayName": "Night"
+                            },
+                            {
+                                "value": "light",
+                                "displayName": "Day"
+                            }
+                        ]
+                    }
+                },
+                "layout": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "value": "constellation",
+                                "displayName": "Constellation"
+                            },
+                            {
+                                "value": "org",
+                                "displayName": "Org chart"
+                            }
+                        ]
+                    }
+                },
+                "title": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "feed": {
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "position": {
+                        "max": 1
+                    },
+                    "reportsTo": {
+                        "max": 1
+                    },
+                    "person": {
+                        "max": 1
+                    },
+                    "name": {
+                        "max": 1
+                    },
+                    "validFrom": {
+                        "max": 1
+                    },
+                    "validTo": {
+                        "max": 1
+                    },
+                    "team": {
+                        "max": 1
+                    },
+                    "group": {
+                        "max": 1
+                    },
+                    "title": {
+                        "max": 1
+                    },
+                    "status": {
+                        "max": 1
+                    },
+                    "reason": {
+                        "max": 1
+                    },
+                    "fte": {
+                        "max": 1
+                    },
+                    "cost": {
+                        "max": 1
+                    },
+                    "targetSpan": {
+                        "max": 1
+                    },
+                    "asOfPage": {
+                        "max": 1
+                    }
+                }
+            ],
+            "table": {
+                "rows": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "position"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "reportsTo"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "person"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "name"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "validFrom"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "validTo"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "team"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "group"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "title"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "status"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "reason"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "fte"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "cost"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "targetSpan"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "asOfPage"
+                            }
+                        }
+                    ],
+                    "dataReductionAlgorithm": {
+                        "window": {
+                            "count": 30000
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "supportsLandingPage": true,
+    "supportsMultiVisualSelection": true,
+    "tooltips": {
+        "supportedTypes": {
+            "default": true,
+            "canvas": true
+        }
+    },
+    "privileges": []
+}

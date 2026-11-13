@@ -1,23 +1,18 @@
 table Targets
-	lineageTag: 0224c185-08f2-42e4-be40-08d683157a0f
 
 	column MonthStart
 		dataType: dateTime
 		isHidden
 		formatString: yyyy-mm-dd
-		lineageTag: 4fb0465c-bd1c-48f4-801c-198aa51de890
 		summarizeBy: none
 		sourceColumn: MonthStart
 
 		annotation SummarizationSetBy = User
 
-		annotation UnderlyingDateTimeDataType = Date
-
 	column StoreID
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: b01321c0-3ade-4bf7-a0d7-9a3200855710
 		summarizeBy: none
 		sourceColumn: StoreID
 
@@ -27,7 +22,6 @@ table Targets
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: b3e22a53-39af-4fa2-8a98-ba16f42553df
 		summarizeBy: none
 		sourceColumn: CategoryID
 
@@ -36,7 +30,6 @@ table Targets
 	column TargetSales
 		dataType: decimal
 		formatString: $#,0
-		lineageTag: 51fa88d7-ea66-4dc1-a8f0-eb722841783e
 		summarizeBy: sum
 		sourceColumn: TargetSales
 

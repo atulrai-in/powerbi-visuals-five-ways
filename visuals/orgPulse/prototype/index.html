@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Org Pulse prototype</title>
+<script type="importmap">{ "imports": { "d3": "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm" } }</script>
+<link rel="stylesheet" href="../style/orgpulse.css">
+<style>
+  html, body { margin: 0; height: 100%; background: #0c1324; }
+  #app { position: absolute; inset: 0 0 22px 0; }
+  #status { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; padding: 3px 12px; font: 11px Consolas, monospace; color: #8a97b0; background: #070b16; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="status">Loading Brightvale people data…</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>

@@ -10,6 +10,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { POST2_MEASURES } from './measures-post2.mjs';
 import { POST4_MEASURES } from './measures-post4.mjs';
+import { PEOPLE_MEASURES, AS_OF_TABLE } from './measures-people.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PBIP = process.argv[2] || 'Brightvale Retail';
@@ -64,6 +65,23 @@ const TABLES = [
   { name: 'Promotions', csv: 'Promotions.csv', cols: [
     ['PromotionID', 'int'], ['PromotionName', 'text'], ['PromotionType', 'text'], ['StartDate', 'date'], ['EndDate', 'date'], ['DiscountPct', 'num', { fmt: '0%' }],
     ['Categories', 'text'], ['Channels', 'text']] },
+  // 14.2 Org Pulse: the sales team (generate-people.mjs)
+  { name: 'People', csv: 'People.csv', cols: [
+    ['PersonID', 'int'], ['PersonName', 'text'], ['HireDate', 'date'], ['ExitDate', 'date'], ['ExitReason', 'text']] },
+  { name: 'Teams', csv: 'Teams.csv', cols: [
+    ['TeamID', 'int'], ['TeamName', 'text'], ['TeamType', 'text'], ['ParentTeamID', 'int', { hidden: true }], ['Region', 'text'], ['StoreID', 'int', { hidden: true }], ['CreatedDate', 'date']] },
+  { name: 'Positions', csv: 'Positions.csv', cols: [
+    ['PositionID', 'int'], ['Title', 'text'], ['Level', 'int'], ['TargetSpan', 'int'], ['OpenDate', 'date']] },
+  { name: 'OrgTimeline', csv: 'OrgTimeline.csv', cols: [
+    ['RowID', 'int', { hidden: true }], ['PositionID', 'int'], ['ReportsToPositionID', 'int'], ['TeamID', 'int', { hidden: true }], ['PersonID', 'int'],
+    ['ValidFrom', 'date'], ['ValidTo', 'date'], ['Status', 'text'], ['ChangeReason', 'text'], ['FTE', 'num', { fmt: '0.00' }], ['AnnualCost', 'money', { fmt: '$#,0' }],
+    // denormalised for the Org Pulse visual: all its fields from one table, so auto-exist keeps the rows real (no cross join)
+    ['Person Name', 'text', { dax: 'RELATED ( People[PersonName] )' }], ['Team Name', 'text', { dax: 'RELATED ( Teams[TeamName] )' }],
+    ['Region', 'text', { dax: 'RELATED ( Teams[Region] )' }], ['Title', 'text', { dax: 'RELATED ( Positions[Title] )' }],
+    ['Target Span', 'int', { dax: 'RELATED ( Positions[TargetSpan] )' }]] },
+  { name: 'Movements', csv: 'Movements.csv', cols: [
+    ['MovementID', 'int', { hidden: true }], ['MoveDate', 'date', { hidden: true }], ['PersonID', 'int', { hidden: true }], ['MoveType', 'text'],
+    ['FromPositionID', 'int'], ['ToPositionID', 'int'], ['FromTeamID', 'int'], ['ToTeamID', 'int'], ['Detail', 'text']] },
 ];
 
 function tableTmdl(t) {
@@ -71,7 +89,7 @@ function tableTmdl(t) {
   if (t.dateTable) L.push(`${T()}dataCategory: Time`);
   L.push('');
   for (const [name, type, o = {}] of t.cols) {
-    L.push(`${T()}column ${q(name)}`);
+    L.push(o.dax ? `${T()}column ${q(name)} = ${o.dax}` : `${T()}column ${q(name)}`);
     L.push(`${T(2)}dataType: ${TMDL_TYPE[type]}`);
     if (o.key) L.push(`${T(2)}isKey`);
     if (o.hidden) L.push(`${T(2)}isHidden`);
@@ -79,11 +97,11 @@ function tableTmdl(t) {
     if (fmt) L.push(`${T(2)}formatString: ${fmt}`);
     if (o.cat) L.push(`${T(2)}dataCategory: ${o.cat}`);
     L.push(`${T(2)}summarizeBy: ${o.sum ? 'sum' : 'none'}`);
-    L.push(`${T(2)}sourceColumn: ${name}`);
+    if (!o.dax) L.push(`${T(2)}sourceColumn: ${name}`);
     if (o.sortBy) L.push(`${T(2)}sortByColumn: ${q(o.sortBy)}`);
     L.push('', `${T(2)}annotation SummarizationSetBy = User`, '');
   }
-  const typed = t.cols.filter(([, , o = {}]) => !o.derived).map(([n, ty]) => `{"${n}", ${M_TYPE[ty]}}`).join(', ');
+  const typed = t.cols.filter(([, , o = {}]) => !o.derived && !o.dax).map(([n, ty]) => `{"${n}", ${M_TYPE[ty]}}`).join(', ');
   const m = [
     'let',
     `    Source = Csv.Document(File.Contents(DataFolder & "${t.csv}"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),`,
@@ -181,7 +199,23 @@ RETURN IF(_order IN {0, 4}, "${NEUTRAL}", IF(_v < 0, "${RED}", "${GREEN}"))`],
   ['Post 1', 'Color Var', '', `IF([Variance to Target %] < 0, "${RED}", "${GREEN}")`],
 );
 
-MEASURES.push(...POST2_MEASURES, ...POST4_MEASURES);
+MEASURES.push(...POST2_MEASURES, ...POST4_MEASURES, ...PEOPLE_MEASURES);
+
+// calculated table; cols: [name, tmdlType, format, sortBy, hidden]
+function calcTableTmdl({ name, dax, cols }) {
+  const L = [`table ${q(name)}`, ''];
+  for (const [c, type, fmt, sortBy, hidden] of cols) {
+    L.push(`${T()}column ${q(c)}`, `${T(2)}dataType: ${type}`);
+    if (hidden) L.push(`${T(2)}isHidden`);
+    if (fmt) L.push(`${T(2)}formatString: ${fmt}`);
+    L.push(`${T(2)}summarizeBy: none`, `${T(2)}sourceColumn: [${c}]`);
+    if (sortBy) L.push(`${T(2)}sortByColumn: ${q(sortBy)}`);
+    L.push('', `${T(2)}annotation SummarizationSetBy = User`, '');
+  }
+  const fence = '```';
+  L.push(`${T()}partition ${q(name)} = calculated`, `${T(2)}mode: import`, `${T(2)}source = ${fence}`, ...dax.split('\n').map(l => T(4) + l), `${T(4)}${fence}`, '');
+  return L.join('\n') + '\n';
+}
 
 function fieldParamTmdl(name, rows) {
   const n = q(name), f = q(`${name} Fields`), o = q(`${name} Order`);
@@ -237,6 +271,9 @@ const RELS = [
   ['Targets', 'MonthStart', 'Calendar', 'Date'], ['Targets', 'StoreID', 'Stores', 'StoreID'], ['Targets', 'CategoryID', 'Categories', 'CategoryID'],
   ['Inventory', 'SnapshotDate', 'Calendar', 'Date'], ['Inventory', 'StoreID', 'Stores', 'StoreID'], ['Inventory', 'CategoryID', 'Categories', 'CategoryID'],
   ['Products', 'CategoryID', 'Categories', 'CategoryID'],
+  // 14.2 Org Pulse
+  ['OrgTimeline', 'PersonID', 'People', 'PersonID'], ['OrgTimeline', 'PositionID', 'Positions', 'PositionID'], ['OrgTimeline', 'TeamID', 'Teams', 'TeamID'],
+  ['Teams', 'StoreID', 'Stores', 'StoreID'], ['Movements', 'PersonID', 'People', 'PersonID'], ['Movements', 'MoveDate', 'Calendar', 'Date'],
 ];
 const relTmdl = RELS.map(([ft, fc, tt, tc]) => [`relationship ${guid(`${ft}.${fc}>${tt}.${tc}`)}`, `${T()}fromColumn: ${q(ft)}.${q(fc)}`, `${T()}toColumn: ${q(tt)}.${q(tc)}`, ''].join('\n')).join('\n') + '\n';
 
@@ -244,11 +281,12 @@ const exprTmdl = [`expression DataFolder = "${DATA}" meta [IsParameterQuery = tr
   `${T()}annotation PBI_ResultType = Text`, ''].join('\n') + '\n';
 
 // ---------- write ----------
-const OWNED = [...TABLES.map(t => t.name), '_Measures', ...Object.keys(FIELD_PARAMS), ...Object.keys(CALC_GROUPS)];
+const OWNED = [...TABLES.map(t => t.name), '_Measures', ...Object.keys(FIELD_PARAMS), ...Object.keys(CALC_GROUPS), AS_OF_TABLE.name];
 for (const t of TABLES) fs.writeFileSync(path.join(DEF, 'tables', `${t.name}.tmdl`), tableTmdl(t));
 fs.writeFileSync(path.join(DEF, 'tables', '_Measures.tmdl'), measuresTmdl());
 for (const [n, rows] of Object.entries(FIELD_PARAMS)) fs.writeFileSync(path.join(DEF, 'tables', `${n}.tmdl`), fieldParamTmdl(n, rows));
 for (const [n, items] of Object.entries(CALC_GROUPS)) fs.writeFileSync(path.join(DEF, 'tables', `${n}.tmdl`), calcGroupTmdl(n, items));
+fs.writeFileSync(path.join(DEF, 'tables', `${AS_OF_TABLE.name}.tmdl`), calcTableTmdl(AS_OF_TABLE));
 fs.writeFileSync(path.join(DEF, 'relationships.tmdl'), relTmdl);
 fs.writeFileSync(path.join(DEF, 'expressions.tmdl'), exprTmdl);
 

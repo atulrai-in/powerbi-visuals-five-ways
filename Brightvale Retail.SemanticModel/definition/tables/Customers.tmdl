@@ -1,10 +1,8 @@
 table Customers
-	lineageTag: 07d84db5-c112-4a44-badc-c37c7a069c46
 
 	column CustomerID
 		dataType: int64
 		formatString: 0
-		lineageTag: 68466867-d533-486b-bd7c-10ddd1acde75
 		summarizeBy: none
 		sourceColumn: CustomerID
 
@@ -12,7 +10,6 @@ table Customers
 
 	column CustomerName
 		dataType: string
-		lineageTag: 9263bf11-40dd-4133-951d-677f6ee49c2b
 		summarizeBy: none
 		sourceColumn: CustomerName
 
@@ -20,7 +17,6 @@ table Customers
 
 	column Gender
 		dataType: string
-		lineageTag: 3b9790f7-9ab7-42cd-86be-9cde2a084a4c
 		summarizeBy: none
 		sourceColumn: Gender
 
@@ -28,7 +24,6 @@ table Customers
 
 	column AgeBand
 		dataType: string
-		lineageTag: 40a4d87c-d6a1-43f4-9a48-d12ac4bb25b5
 		summarizeBy: none
 		sourceColumn: AgeBand
 
@@ -36,7 +31,6 @@ table Customers
 
 	column Segment
 		dataType: string
-		lineageTag: b08ef788-8dad-4d10-a702-1e470d2863ac
 		summarizeBy: none
 		sourceColumn: Segment
 
@@ -44,7 +38,6 @@ table Customers
 
 	column LoyaltyTier
 		dataType: string
-		lineageTag: 8e5b3798-005c-404d-9db8-5103b0685119
 		summarizeBy: none
 		sourceColumn: LoyaltyTier
 		sortByColumn: LoyaltyTierOrder
@@ -54,19 +47,15 @@ table Customers
 	column JoinDate
 		dataType: dateTime
 		formatString: yyyy-mm-dd
-		lineageTag: a9d5d200-1405-4ade-aa0f-ccb0d969bfb4
 		summarizeBy: none
 		sourceColumn: JoinDate
 
 		annotation SummarizationSetBy = User
 
-		annotation UnderlyingDateTimeDataType = Date
-
 	column HomeStoreID
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: bf469cf7-f6e9-404e-a1b2-79541149367a
 		summarizeBy: none
 		sourceColumn: HomeStoreID
 
@@ -74,7 +63,6 @@ table Customers
 
 	column City
 		dataType: string
-		lineageTag: 8f3f24d8-432d-4a1b-8209-711655d98f62
 		dataCategory: City
 		summarizeBy: none
 		sourceColumn: City
@@ -83,7 +71,6 @@ table Customers
 
 	column State
 		dataType: string
-		lineageTag: 08c6d250-bb60-4ab0-8187-88265af9de95
 		dataCategory: StateOrProvince
 		summarizeBy: none
 		sourceColumn: State
@@ -94,7 +81,6 @@ table Customers
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 783af58b-b395-4c40-9bb4-43f60f9b90a5
 		summarizeBy: none
 		sourceColumn: LoyaltyTierOrder
 

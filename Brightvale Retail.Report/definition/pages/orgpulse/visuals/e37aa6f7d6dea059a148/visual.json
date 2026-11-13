@@ -1,0 +1,490 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "e37aa6f7d6dea059a148",
+  "position": {
+    "x": 24,
+    "y": 146,
+    "z": 6000,
+    "width": 1872,
+    "height": 912,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "orgPulseF3E708682B184C7AB48CDD039D8796FB",
+    "query": {
+      "queryState": {
+        "position": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "PositionID"
+                }
+              },
+              "queryRef": "OrgTimeline.PositionID",
+              "nativeQueryRef": "PositionID"
+            }
+          ]
+        },
+        "reportsTo": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "ReportsToPositionID"
+                }
+              },
+              "queryRef": "OrgTimeline.ReportsToPositionID",
+              "nativeQueryRef": "ReportsToPositionID"
+            }
+          ]
+        },
+        "person": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "PersonID"
+                }
+              },
+              "queryRef": "OrgTimeline.PersonID",
+              "nativeQueryRef": "PersonID"
+            }
+          ]
+        },
+        "name": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "Person Name"
+                }
+              },
+              "queryRef": "OrgTimeline.Person Name",
+              "nativeQueryRef": "Person Name"
+            }
+          ]
+        },
+        "validFrom": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "ValidFrom"
+                }
+              },
+              "queryRef": "OrgTimeline.ValidFrom",
+              "nativeQueryRef": "ValidFrom"
+            }
+          ]
+        },
+        "validTo": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "ValidTo"
+                }
+              },
+              "queryRef": "OrgTimeline.ValidTo",
+              "nativeQueryRef": "ValidTo"
+            }
+          ]
+        },
+        "team": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "Team Name"
+                }
+              },
+              "queryRef": "OrgTimeline.Team Name",
+              "nativeQueryRef": "Team Name"
+            }
+          ]
+        },
+        "group": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "OrgTimeline.Region",
+              "nativeQueryRef": "Region"
+            }
+          ]
+        },
+        "title": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "Title"
+                }
+              },
+              "queryRef": "OrgTimeline.Title",
+              "nativeQueryRef": "Title"
+            }
+          ]
+        },
+        "status": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "OrgTimeline.Status",
+              "nativeQueryRef": "Status"
+            }
+          ]
+        },
+        "reason": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "ChangeReason"
+                }
+              },
+              "queryRef": "OrgTimeline.ChangeReason",
+              "nativeQueryRef": "ChangeReason"
+            }
+          ]
+        },
+        "fte": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "FTE"
+                }
+              },
+              "queryRef": "OrgTimeline.FTE",
+              "nativeQueryRef": "FTE"
+            }
+          ]
+        },
+        "targetSpan": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrgTimeline"
+                    }
+                  },
+                  "Property": "Target Span"
+                }
+              },
+              "queryRef": "OrgTimeline.Target Span",
+              "nativeQueryRef": "Target Span"
+            }
+          ]
+        },
+        "asOfPage": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "As Of Date"
+                }
+              },
+              "queryRef": "_Measures.As Of Date",
+              "nativeQueryRef": "As Of Date"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {
+            "title": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Brightvale · Sales organisation'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "sync": [
+        {
+          "properties": {
+            "enabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0C1324'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E5E7EB'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "88D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#000000'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

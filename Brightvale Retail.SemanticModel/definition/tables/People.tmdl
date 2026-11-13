@@ -1,0 +1,50 @@
+table People
+
+	column PersonID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: PersonID
+
+		annotation SummarizationSetBy = User
+
+	column PersonName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: PersonName
+
+		annotation SummarizationSetBy = User
+
+	column HireDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: HireDate
+
+		annotation SummarizationSetBy = User
+
+	column ExitDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: ExitDate
+
+		annotation SummarizationSetBy = User
+
+	column ExitReason
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ExitReason
+
+		annotation SummarizationSetBy = User
+
+	partition People = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "People.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"PersonID", Int64.Type}, {"PersonName", type text}, {"HireDate", type date}, {"ExitDate", type date}, {"ExitReason", type text}}, "en-US")
+				in
+				    Typed
+

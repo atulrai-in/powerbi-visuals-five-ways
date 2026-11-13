@@ -1,10 +1,8 @@
 table Categories
-	lineageTag: bbb85d16-c68f-4e73-af48-c8fbd9c2d1ab
 
 	column CategoryID
 		dataType: int64
 		formatString: 0
-		lineageTag: 38f27dd0-9be2-4ed4-8086-d5506e3cd2a0
 		summarizeBy: none
 		sourceColumn: CategoryID
 
@@ -12,7 +10,6 @@ table Categories
 
 	column Category
 		dataType: string
-		lineageTag: 8de26a67-000c-4388-bb02-e9607cec7ee6
 		summarizeBy: none
 		sourceColumn: Category
 
@@ -20,7 +17,6 @@ table Categories
 
 	column Department
 		dataType: string
-		lineageTag: 7833bcf1-e2b8-4818-b619-944558743214
 		summarizeBy: none
 		sourceColumn: Department
 

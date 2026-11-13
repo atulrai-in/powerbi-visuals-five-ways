@@ -1,233 +1,199 @@
 table _Measures
-	lineageTag: 6f3bc836-903d-4b89-bfd2-01ec8de1937c
 
 	measure 'Net Sales' = SUM(Sales[NetSales])
 		formatString: $#,0
 		displayFolder: Sales
-		lineageTag: 8ded67a3-c737-42ae-9c05-181524226893
 
 	measure 'Gross Sales' = SUMX(Sales, Sales[Quantity] * Sales[UnitPrice])
 		formatString: $#,0
 		displayFolder: Sales
-		lineageTag: c1583ac7-970f-44a8-b27d-58bc08e27a2a
 
 	measure 'Discount Amount' = [Gross Sales] - [Net Sales]
 		formatString: $#,0
 		displayFolder: Sales
-		lineageTag: fb704844-b507-4fb0-aaeb-13453387b7d6
 
 	measure 'Discount %' = DIVIDE([Discount Amount], [Gross Sales])
 		formatString: 0.0%
 		displayFolder: Sales
-		lineageTag: c1a1ea37-4d30-477e-8649-5b624e272c1e
 
 	measure Units = SUM(Sales[Quantity])
 		formatString: #,0
 		displayFolder: Sales
-		lineageTag: b767eedc-e358-4de8-ba60-e4dc1bcaa4ca
 
 	measure Orders = DISTINCTCOUNT(Sales[OrderID])
 		formatString: #,0
 		displayFolder: Sales
-		lineageTag: 8c3c00cc-6e99-458b-92b8-bb6c32c1ca3b
 
 	measure 'Avg Order Value' = DIVIDE([Net Sales], [Orders])
 		formatString: $#,0.00
 		displayFolder: Sales
-		lineageTag: 4e6cd498-8847-4c71-b755-672c8daa5043
 
 	measure 'Active Customers' = CALCULATE(DISTINCTCOUNT(Sales[CustomerID]), Sales[CustomerID] <> 0)
 		formatString: #,0
 		displayFolder: Sales
-		lineageTag: 0e029486-6e02-4b17-bccf-282d6908e1a7
 
 	measure 'Online Share %' = DIVIDE(CALCULATE([Net Sales], Sales[Channel] = "Online"), [Net Sales])
 		formatString: 0.0%
 		displayFolder: Sales
-		lineageTag: 91e4097e-55fd-419b-8955-3fd3facf204e
 
 	measure 'Promo Share %' = DIVIDE(CALCULATE([Net Sales], Sales[PromotionID] <> 0), [Net Sales])
 		formatString: 0.0%
 		displayFolder: Sales
-		lineageTag: c6996943-9da0-4bec-a669-0fffeeb5e3fe
 
 	measure Cost = SUM(Sales[CostAmount])
 		formatString: $#,0
 		displayFolder: Margin
-		lineageTag: bb7719be-cbb7-4596-9d49-00690a681e4f
 
 	measure Margin = [Net Sales] - [Cost]
 		formatString: $#,0
 		displayFolder: Margin
-		lineageTag: 93a119a6-255f-4738-a32c-1f8168fd7cf7
 
 	measure 'Margin %' = DIVIDE([Margin], [Net Sales])
 		formatString: 0.0%
 		displayFolder: Margin
-		lineageTag: 5f59b383-2251-4385-96cd-f67b2f9b196d
 
-	measure 'Net Sales PY' =
+	measure 'Net Sales PY' = ```
 			-- prior year, limited to dates that have actuals this year (fair YTD comparison)
 			CALCULATE(
 			    [Net Sales],
 			    CALCULATETABLE(SAMEPERIODLASTYEAR('Calendar'[Date]), 'Calendar'[HasActuals] = 1)
 			)
+			```
 		formatString: $#,0
 		displayFolder: Time Intelligence
-		lineageTag: 20252850-13f5-4c18-b478-1d248d3d69ec
 
 	measure 'YoY Change' = VAR _py = [Net Sales PY] RETURN IF(NOT ISBLANK(_py), [Net Sales] - _py)
 		formatString: $#,0
 		displayFolder: Time Intelligence
-		lineageTag: e7e5db21-8e29-44b1-a219-cd21dc3b4b7b
 
 	measure 'YoY %' = DIVIDE([YoY Change], [Net Sales PY])
 		formatString: 0.0%
 		displayFolder: Time Intelligence
-		lineageTag: 9510339e-0ed9-4d6b-9c27-6bbb03651cff
 
 	measure 'Net Sales YTD' = TOTALYTD([Net Sales], 'Calendar'[Date])
 		formatString: $#,0
 		displayFolder: Time Intelligence
-		lineageTag: 87a59b67-dd62-4c09-955b-1b70cf4d631e
 
 	measure 'Margin % PY' = CALCULATE([Margin %], CALCULATETABLE(SAMEPERIODLASTYEAR('Calendar'[Date]), 'Calendar'[HasActuals] = 1))
 		formatString: 0.0%
 		displayFolder: Time Intelligence
-		lineageTag: 7c326c28-d402-46af-b12f-b2d0241b978c
 
-	measure 'LFL Net Sales' =
+	measure 'LFL Net Sales' = ```
 			-- stores open at least 12 months before the start of the selected period
 			VAR _cutoff = EDATE(MIN('Calendar'[Date]), -12)
 			RETURN CALCULATE([Net Sales], KEEPFILTERS(Stores[OpenDate] <= _cutoff))
+			```
 		formatString: $#,0
 		displayFolder: Like for Like
-		lineageTag: 46375cda-91fd-4d6e-9568-3a8384be9996
 
-	measure 'LFL Net Sales PY' =
+	measure 'LFL Net Sales PY' = ```
 			VAR _cutoff = EDATE(MIN('Calendar'[Date]), -12)
 			RETURN CALCULATE([Net Sales PY], KEEPFILTERS(Stores[OpenDate] <= _cutoff))
+			```
 		formatString: $#,0
 		displayFolder: Like for Like
-		lineageTag: 8e57dd4a-1984-4957-ba16-5ef8390b7bfb
 
 	measure 'LFL YoY %' = DIVIDE([LFL Net Sales] - [LFL Net Sales PY], [LFL Net Sales PY])
 		formatString: 0.0%
 		displayFolder: Like for Like
-		lineageTag: d0608624-308b-4f7e-9de4-f88306f5f254
 
 	measure Target = SUM(Targets[TargetSales])
 		formatString: $#,0
 		displayFolder: Target
-		lineageTag: 57d342c8-8de6-4455-a6d5-4d0079e1a579
 
 	measure 'Target to Date' = CALCULATE([Target], KEEPFILTERS('Calendar'[HasActuals] = 1))
 		formatString: $#,0
 		displayFolder: Target
-		lineageTag: 58de2911-248c-4b16-9a23-63647ffe2a6e
 
 	measure 'Variance to Target' = VAR _t = [Target to Date] RETURN IF(NOT ISBLANK(_t), [Net Sales] - _t)
 		formatString: $#,0
 		displayFolder: Target
-		lineageTag: 4be0a567-d434-4549-9a83-0ee64233b133
 
 	measure 'Variance to Target %' = DIVIDE([Variance to Target], [Target to Date])
 		formatString: 0.0%
 		displayFolder: Target
-		lineageTag: 83e22e50-da21-45f3-bd69-3292bfa243a1
 
 	measure 'Refund Amount' = SUM(Returns[RefundAmount])
 		formatString: $#,0
 		displayFolder: Returns
-		lineageTag: 38946fa5-0024-4778-84e3-7358c7944ac7
 
 	measure 'Return Lines' = COUNTROWS(Returns)
 		formatString: #,0
 		displayFolder: Returns
-		lineageTag: 934ffb0e-c220-411b-9678-29e2add4d147
 
-	measure 'Return Rate %' =
+	measure 'Return Rate %' = ```
 			-- returned lines / sold lines
 			DIVIDE([Return Lines], COUNTROWS(Sales))
+			```
 		formatString: 0.0%
 		displayFolder: Returns
-		lineageTag: 56484825-957a-4973-9567-4dac32145a2d
 
 	measure 'Refund % of Sales' = DIVIDE([Refund Amount], [Net Sales])
 		formatString: 0.0%
 		displayFolder: Returns
-		lineageTag: 5ceeac56-6ecb-471e-bcb4-35cadbe75645
 
-	measure 'On Hand Units' =
+	measure 'On Hand Units' = ```
 			-- semi-additive: last month-end snapshot in the period
 			VAR _last = CALCULATE(MAX(Inventory[SnapshotDate]))
 			RETURN CALCULATE(SUM(Inventory[OnHandUnits]), 'Calendar'[Date] = _last)
+			```
 		formatString: #,0
 		displayFolder: Inventory
-		lineageTag: 978489dc-7e14-496b-95ad-269d76b91734
 
-	measure 'On Hand Cost' =
+	measure 'On Hand Cost' = ```
 			VAR _last = CALCULATE(MAX(Inventory[SnapshotDate]))
 			RETURN CALCULATE(SUM(Inventory[OnHandCost]), 'Calendar'[Date] = _last)
+			```
 		formatString: $#,0
 		displayFolder: Inventory
-		lineageTag: 8f5e68e0-87e2-4226-972e-41a51fa031db
 
-	measure 'Avg Weeks of Cover' =
+	measure 'Avg Weeks of Cover' = ```
 			VAR _last = CALCULATE(MAX(Inventory[SnapshotDate]))
 			RETURN CALCULATE(AVERAGE(Inventory[WeeksOfCover]), 'Calendar'[Date] = _last)
+			```
 		formatString: 0.0
 		displayFolder: Inventory
-		lineageTag: c6d5ad2c-cfc2-4ea7-9900-93a3416f57d6
 
 	measure 'Avg Stockout Days' = AVERAGE(Inventory[StockoutDays])
 		formatString: 0.0
 		displayFolder: Inventory
-		lineageTag: 76ac3623-e728-494d-b697-36d4788e2654
 
-	measure 'Title Trend' =
+	measure 'Title Trend' = ```
 			VAR _region = IF(HASONEVALUE(Stores[Region]), VALUES(Stores[Region]), "All regions")
 			RETURN _region & ": total sales " & FORMAT([YoY %], "+0.0%;-0.0%") & " YoY, like-for-like stores " & FORMAT([LFL YoY %], "+0.0%;-0.0%")
+			```
 		displayFolder: Post 1
-		lineageTag: b6f1956f-af10-4913-98ff-f0744d51c56f
 
 	measure 'Selected Metric' = SWITCH(SELECTEDVALUE(Metric[Metric Order]), 0, "Net Sales", 1, "YoY %", 2, "LFL YoY %", 3, "Variance to Target %", 4, "Margin %", "Metric")
 		displayFolder: Post 1
-		lineageTag: 05be3e39-dccc-4cd5-9c38-e5fa4f9a45fd
 
 	measure 'Selected Breakdown' = SWITCH(SELECTEDVALUE(Breakdown[Breakdown Order]), 0, "Region", 1, "Store", 2, "Format", 3, "Category", "breakdown")
 		displayFolder: Post 1
-		lineageTag: dd36d8ed-b05c-48be-8ce2-9453d91b1fa8
 
 	measure 'Title Breakdown' = [Selected Metric] & " by " & LOWER([Selected Breakdown])
 		displayFolder: Post 1
-		lineageTag: 1271c83b-6207-4dff-9dc9-23404a89a5b7
 
 	measure 'Title Matrix' = [Selected Metric] & ": all stores vs like-for-like vs new stores"
 		displayFolder: Post 1
-		lineageTag: 8a885a14-8e69-4636-bd57-d5985f941071
 
-	measure 'Metric Color' =
+	measure 'Metric Color' = ```
 			-- bars: neutral for absolute metrics, red/green for growth and variance metrics
 			VAR _order = SELECTEDVALUE(Metric[Metric Order], 0)
 			VAR _v = SWITCH(_order, 1, [YoY %], 2, [LFL YoY %], 3, [Variance to Target %])
 			RETURN IF(_order IN {0, 4}, "#1E3A5F", IF(_v < 0, "#C2410C", "#15803D"))
+			```
 		displayFolder: Post 1
-		lineageTag: ea693146-089f-4f45-a17d-7182c634636f
 
 	measure 'Color YoY' = IF([YoY %] < 0, "#C2410C", "#15803D")
 		displayFolder: Post 1
-		lineageTag: 79786e62-13c4-4bf1-82f2-d7ac26a702d3
 
 	measure 'Color LFL' = IF([LFL YoY %] < 0, "#C2410C", "#15803D")
 		displayFolder: Post 1
-		lineageTag: 77fb54a3-7f41-4c51-872b-fd2001eb6aa1
 
 	measure 'Color Var' = IF([Variance to Target %] < 0, "#C2410C", "#15803D")
 		displayFolder: Post 1
-		lineageTag: 25ad8336-dce9-462c-a893-aaad10ba3d9f
 
-	measure 'SVG Sparkline' =
+	measure 'SVG Sparkline' = ```
 			-- rolling 12-month net sales at each month end since Jan 2025 (removes the Black Friday spike so the trend shows)
 			-- months with no sales yet are skipped, so new stores start partway along
 			VAR _w = 200
@@ -277,11 +243,11 @@ table _Measures
 			            & "<polyline points='" & _poly & "' fill='none' stroke='" & _col & "' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'/>"
 			            & "<circle cx='" & _lx & "' cy='" & _ly & "' r='2.8' fill='" & _col & "'/></svg>"
 			    )
-		displayFolder: Post 2
-		lineageTag: 6d6b9051-dcc9-498d-b61a-03312b204b83
+			```
 		dataCategory: ImageUrl
+		displayFolder: Post 2
 
-	measure 'SVG Bullet' =
+	measure 'SVG Bullet' = ```
 			-- bullet chart: bar = actual, tick = target to date, grey bands = 0-90% and 90-130% of target
 			VAR _a = [Net Sales]
 			VAR _tgt = [Target to Date]
@@ -302,11 +268,11 @@ table _Measures
 			            & "<line x1='" & _tx & "' x2='" & _tx & "' y1='3' y2='25' stroke='%231E3A5F' stroke-width='2'/>"
 			            & "<text x='144' y='20' font-family='Segoe UI' font-size='17' font-weight='600' fill='%231F2937'>" & FORMAT ( _pct * 100, "0" ) & "%25</text></svg>"
 			    )
-		displayFolder: Post 2
-		lineageTag: 547a549f-c03c-4cfc-b223-72891e0a5823
+			```
 		dataCategory: ImageUrl
+		displayFolder: Post 2
 
-	measure 'Store Status' =
+	measure 'Store Status' = ```
 			VAR _cutoff = EDATE ( MIN ( 'Calendar'[Date] ), -12 )
 			VAR _open = MIN ( Stores[OpenDate] )
 			VAR _yoy = [YoY %]
@@ -322,10 +288,10 @@ table _Measures
 			            "Steady"
 			        )
 			    )
+			```
 		displayFolder: Post 2
-		lineageTag: 1b287394-8949-4ba4-88c3-5fedf099d954
 
-	measure 'SVG Status' =
+	measure 'SVG Status' = ```
 			VAR _s = [Store Status]
 			VAR _bg = SWITCH ( _s, "Ramping", "%23DBEAFE", "Growing", "%23DCFCE7", "Declining", "%23FEE2E2", "Slipping", "%23FFEDD5", "%23F1F5F9" )
 			VAR _fg = SWITCH ( _s, "Ramping", "%231D4ED8", "Growing", "%2315803D", "Declining", "%23B91C1C", "Slipping", "%23C2410C", "%23475569" )
@@ -336,20 +302,20 @@ table _Measures
 			            & "<rect x='20' y='1' width='160' height='26' rx='13' fill='" & _bg & "'/>"
 			            & "<text x='100' y='20' text-anchor='middle' font-family='Segoe UI' font-size='17' font-weight='700' fill='" & _fg & "'>" & _s & "</text></svg>"
 			    )
-		displayFolder: Post 2
-		lineageTag: 4e6e074d-047d-442b-ae7f-8afda46c4319
+			```
 		dataCategory: ImageUrl
+		displayFolder: Post 2
 
-	measure 'Title Scorecard' =
+	measure 'Title Scorecard' = ```
 			VAR _declining = COUNTROWS ( FILTER ( VALUES ( Stores[StoreID] ), [Store Status] = "Declining" ) )
 			VAR _ramping = COUNTROWS ( FILTER ( VALUES ( Stores[StoreID] ), [Store Status] = "Ramping" ) )
 			RETURN
 			    "Store scorecard " & SELECTEDVALUE ( 'Calendar'[Year] ) & " YTD · " & _declining & " stores declining · "
 			        & _ramping & " new stores ramping"
+			```
 		displayFolder: Post 2
-		lineageTag: 0376b9c4-b1d6-4b67-8580-320cd4e7c21b
 
-	measure 'Promo Window Sales' =
+	measure 'Promo Window Sales' = ```
 			-- net sales of the promoted categories and channels, from 6 weeks before to 8 weeks after the promotion
 			-- (ignores the promotion filter itself, so non-promo sales of those categories count too)
 			VAR _s = SELECTEDVALUE ( Promotions[StartDate] )
@@ -368,11 +334,11 @@ table _Measures
 			            KEEPFILTERS ( FILTER ( ALL ( Sales[Channel] ), CONTAINSSTRING ( _ch, Sales[Channel] ) ) )
 			        ) + 0
 			    )
+			```
 		formatString: $#,0
 		displayFolder: Post 4
-		lineageTag: 52d8cc72-8b44-42e0-9168-51d5094a8504
 
-	measure 'Promo Window Sales LY' =
+	measure 'Promo Window Sales LY' = ```
 			-- same categories and channels, same weekday 52 weeks earlier: the baseline that removes seasonality
 			VAR _s = SELECTEDVALUE ( Promotions[StartDate] )
 			VAR _e = SELECTEDVALUE ( Promotions[EndDate] )
@@ -391,11 +357,11 @@ table _Measures
 			            KEEPFILTERS ( FILTER ( ALL ( Sales[Channel] ), CONTAINSSTRING ( _ch, Sales[Channel] ) ) )
 			        ) + 0
 			    )
+			```
 		formatString: $#,0
 		displayFolder: Post 4
-		lineageTag: 3563c786-0e19-464e-ad52-127de3a5ef97
 
-	measure 'Promo Phase' =
+	measure 'Promo Phase' = ```
 			VAR _s = SELECTEDVALUE ( Promotions[StartDate] )
 			VAR _e = SELECTEDVALUE ( Promotions[EndDate] )
 			VAR _cats = SELECTEDVALUE ( Promotions[Categories] )
@@ -406,10 +372,10 @@ table _Measures
 			        NOT ISBLANK ( [Promo Window Sales] ),
 			        SWITCH ( TRUE (), _d < _s, "Before", _d <= _e, "During", _d <= _e + 28, "Next 4 weeks", "Weeks 5-8" )
 			    )
+			```
 		displayFolder: Post 4
-		lineageTag: 1cc15ad9-b5c6-4316-a00b-1fa7b1510e6c
 
-	measure 'Title Promo' =
+	measure 'Title Promo' = ```
 			-- Percentages live in the chart's bands: a click cross-filter from another visual
 			-- does not reach a visual's dynamic title (slicer filters do), so the title would go stale.
 			VAR _name = SELECTEDVALUE ( Promotions[PromotionName] )
@@ -425,13 +391,139 @@ table _Measures
 			            & IF ( LEN ( _cats ) > 60, "sales (all categories)", SUBSTITUTE ( _cats, "; ", ", " ) & " sales" )
 			            & " vs the same weekdays last year"
 			    )
+			```
 		displayFolder: Post 4
-		lineageTag: d7cb817d-0553-4a7f-8186-784be4600323
+
+	measure 'As Of Date' = MAX ( 'As Of'[As Of Date] )
+		formatString: d mmm yyyy
+		displayFolder: People
+
+	measure 'As Of Label' = "as at " & FORMAT ( [As Of Date], "d mmm yyyy" )
+		displayFolder: People
+
+	measure 'Planned FTE' = ```
+			-- every live seat, filled or open
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			RETURN SUMX ( _live, OrgTimeline[FTE] )
+			```
+		formatString: #,0.0
+		displayFolder: People
+
+	measure 'Effective FTE' = ```
+			-- seats with someone in them who is not on leave
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			RETURN SUMX ( FILTER ( _live, OrgTimeline[Status] = "Filled" ), OrgTimeline[FTE] )
+			```
+		formatString: #,0.0
+		displayFolder: People
+
+	measure 'Staffed %' = DIVIDE ( [Effective FTE], [Planned FTE] )
+		formatString: 0%
+		displayFolder: People
+
+	measure Headcount = ```
+			-- people in post, including those on leave
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			RETURN COUNTROWS ( FILTER ( _live, NOT ISBLANK ( OrgTimeline[PersonID] ) ) )
+			```
+		formatString: #,0
+		displayFolder: People
+
+	measure 'Open Roles' = ```
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			RETURN COUNTROWS ( FILTER ( _live, OrgTimeline[Status] = "Open" ) ) + 0
+			```
+		formatString: #,0
+		displayFolder: People
+
+	measure 'On Leave' = ```
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			RETURN COUNTROWS ( FILTER ( _live, OrgTimeline[Status] = "On leave" ) ) + 0
+			```
+		formatString: #,0
+		displayFolder: People
+
+	measure 'Staff Cost' = ```
+			-- annual cost of the people in post
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			RETURN SUMX ( _live, OrgTimeline[AnnualCost] )
+			```
+		formatString: $#,0
+		displayFolder: People
+
+	measure Managers = ```
+			-- seats that have at least one person reporting to them
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			RETURN COUNTROWS ( DISTINCT ( SELECTCOLUMNS ( FILTER ( _live, NOT ISBLANK ( OrgTimeline[PersonID] ) && NOT ISBLANK ( OrgTimeline[ReportsToPositionID] ) ), "m", OrgTimeline[ReportsToPositionID] ) ) )
+			```
+		formatString: #,0
+		displayFolder: People
+
+	measure 'Avg Span' = ```
+			VAR _d = [As Of Date]
+			VAR _live = FILTER ( OrgTimeline, OrgTimeline[ValidFrom] <= _d && ( ISBLANK ( OrgTimeline[ValidTo] ) || OrgTimeline[ValidTo] >= _d ) )
+			VAR _reports = COUNTROWS ( FILTER ( _live, NOT ISBLANK ( OrgTimeline[PersonID] ) && NOT ISBLANK ( OrgTimeline[ReportsToPositionID] ) ) )
+			RETURN DIVIDE ( _reports, [Managers] )
+			```
+		formatString: 0.0
+		displayFolder: People
+
+	measure 'Hires 90d' = ```
+			VAR _d = [As Of Date]
+			RETURN
+			    CALCULATE (
+			        COUNTROWS ( Movements ),
+			        REMOVEFILTERS ( 'Calendar' ),
+			        Movements[MoveType] IN { "Hire" },
+			        Movements[MoveDate] > _d - 90,
+			        Movements[MoveDate] <= _d
+			    ) + 0
+			```
+		formatString: #,0
+		displayFolder: People
+
+	measure 'Exits 12m' = ```
+			VAR _d = [As Of Date]
+			RETURN
+			    CALCULATE (
+			        COUNTROWS ( Movements ),
+			        REMOVEFILTERS ( 'Calendar' ),
+			        Movements[MoveType] IN { "Exit" },
+			        Movements[MoveDate] > _d - 365,
+			        Movements[MoveDate] <= _d
+			    ) + 0
+			```
+		formatString: #,0
+		displayFolder: People
+
+	measure 'Internal Moves 12m' = ```
+			VAR _d = [As Of Date]
+			RETURN
+			    CALCULATE (
+			        COUNTROWS ( Movements ),
+			        REMOVEFILTERS ( 'Calendar' ),
+			        Movements[MoveType] IN { "Transfer", "Promotion" },
+			        Movements[MoveDate] > _d - 365,
+			        Movements[MoveDate] <= _d
+			    ) + 0
+			```
+		formatString: #,0
+		displayFolder: People
+
+	measure 'Attrition % 12m' = DIVIDE ( [Exits 12m], [Headcount] )
+		formatString: 0.0%
+		displayFolder: People
 
 	column Placeholder
 		dataType: string
 		isHidden
-		lineageTag: b775c4a3-9e06-4cf8-9446-b264e9e39e4b
 		summarizeBy: none
 		sourceColumn: Placeholder
 
@@ -439,5 +531,6 @@ table _Measures
 
 	partition _Measures = m
 		mode: import
-		source = #table(type table [Placeholder = text], {})
+		source =
+				#table(type table [Placeholder = text], {})
 

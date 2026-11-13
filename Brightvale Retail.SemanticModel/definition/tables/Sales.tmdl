@@ -1,11 +1,9 @@
 table Sales
-	lineageTag: ce81cc59-f825-4b1c-a38a-17f5af09cdae
 
 	column OrderLineID
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 29f80251-87b6-49b4-afae-3dda52f11291
 		summarizeBy: none
 		sourceColumn: OrderLineID
 
@@ -14,7 +12,6 @@ table Sales
 	column OrderID
 		dataType: int64
 		formatString: 0
-		lineageTag: bcb827c0-ac7f-40e6-af60-cb574512e938
 		summarizeBy: none
 		sourceColumn: OrderID
 
@@ -24,18 +21,14 @@ table Sales
 		dataType: dateTime
 		isHidden
 		formatString: yyyy-mm-dd
-		lineageTag: fef814eb-c447-4d0a-b497-1c7128c99dd9
 		summarizeBy: none
 		sourceColumn: OrderDate
 
 		annotation SummarizationSetBy = User
 
-		annotation UnderlyingDateTimeDataType = Date
-
 	column OrderHour
 		dataType: int64
 		formatString: 0
-		lineageTag: b366ddd2-b835-4ed9-b8b0-76ed488a83a1
 		summarizeBy: none
 		sourceColumn: OrderHour
 
@@ -45,7 +38,6 @@ table Sales
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: aebf0029-3a89-4565-bc89-ee9fe95fd6b4
 		summarizeBy: none
 		sourceColumn: StoreID
 
@@ -53,7 +45,6 @@ table Sales
 
 	column Channel
 		dataType: string
-		lineageTag: 16e5b21b-6e9a-4af2-a265-1b4fe0e0bd96
 		summarizeBy: none
 		sourceColumn: Channel
 
@@ -63,7 +54,6 @@ table Sales
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 5d202033-ae23-4fba-a50c-bb1d3808f535
 		summarizeBy: none
 		sourceColumn: CustomerID
 
@@ -73,7 +63,6 @@ table Sales
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: d44bef9b-5c4b-422d-afb6-0a034f2c25d7
 		summarizeBy: none
 		sourceColumn: ProductID
 
@@ -83,7 +72,6 @@ table Sales
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: d72a9ee7-f3ba-4498-a676-3919d6ea1e4a
 		summarizeBy: none
 		sourceColumn: PromotionID
 
@@ -92,7 +80,6 @@ table Sales
 	column Quantity
 		dataType: int64
 		formatString: #,0
-		lineageTag: c6b634b7-7afa-4dae-bfe5-30214ed1b640
 		summarizeBy: sum
 		sourceColumn: Quantity
 
@@ -101,7 +88,6 @@ table Sales
 	column UnitPrice
 		dataType: decimal
 		formatString: $#,0.00
-		lineageTag: a815094f-dc14-4e40-ad20-04c8b7860118
 		summarizeBy: none
 		sourceColumn: UnitPrice
 
@@ -110,7 +96,6 @@ table Sales
 	column DiscountPct
 		dataType: double
 		formatString: 0.0%
-		lineageTag: 0966135c-7cae-4a0a-9bbb-cf888faed698
 		summarizeBy: none
 		sourceColumn: DiscountPct
 
@@ -119,7 +104,6 @@ table Sales
 	column NetSales
 		dataType: decimal
 		formatString: $#,0.00
-		lineageTag: 70d64976-dfb4-44a6-b4a0-e108a21dcb9d
 		summarizeBy: sum
 		sourceColumn: NetSales
 
@@ -128,7 +112,6 @@ table Sales
 	column CostAmount
 		dataType: decimal
 		formatString: $#,0.00
-		lineageTag: 86b1df52-c64f-4bdd-9ec5-ad0752addcc8
 		summarizeBy: sum
 		sourceColumn: CostAmount
 

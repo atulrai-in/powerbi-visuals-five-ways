@@ -1,0 +1,67 @@
+table Teams
+
+	column TeamID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: TeamID
+
+		annotation SummarizationSetBy = User
+
+	column TeamName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TeamName
+
+		annotation SummarizationSetBy = User
+
+	column TeamType
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TeamType
+
+		annotation SummarizationSetBy = User
+
+	column ParentTeamID
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ParentTeamID
+
+		annotation SummarizationSetBy = User
+
+	column Region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = User
+
+	column StoreID
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: StoreID
+
+		annotation SummarizationSetBy = User
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = User
+
+	partition Teams = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Teams.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"TeamID", Int64.Type}, {"TeamName", type text}, {"TeamType", type text}, {"ParentTeamID", Int64.Type}, {"Region", type text}, {"StoreID", Int64.Type}, {"CreatedDate", type date}}, "en-US")
+				in
+				    Typed
+

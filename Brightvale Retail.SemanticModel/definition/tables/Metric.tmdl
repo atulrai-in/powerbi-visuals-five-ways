@@ -1,9 +1,7 @@
 table Metric
-	lineageTag: e61e67ab-3c26-4f34-a08f-a878cce2ab73
 
 	column Metric
 		dataType: string
-		lineageTag: 82877592-1d01-4c22-8b93-63e554849277
 		summarizeBy: none
 		sourceColumn: [Value1]
 		sortByColumn: 'Metric Order'
@@ -16,7 +14,6 @@ table Metric
 	column 'Metric Fields'
 		dataType: string
 		isHidden
-		lineageTag: ed2cc953-a813-4baa-9bbd-b49bedb2d833
 		summarizeBy: none
 		sourceColumn: [Value2]
 		sortByColumn: 'Metric Order'
@@ -33,7 +30,6 @@ table Metric
 		dataType: int64
 		isHidden
 		formatString: 0
-		lineageTag: 0c1ddfe7-af2e-49fc-b377-2edf3d9ce169
 		summarizeBy: sum
 		sourceColumn: [Value3]
 

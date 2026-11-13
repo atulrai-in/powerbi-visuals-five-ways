@@ -1,0 +1,40 @@
+table 'As Of'
+
+	column 'As Of Date'
+		dataType: dateTime
+		formatString: d mmm yyyy
+		summarizeBy: none
+		sourceColumn: [As Of Date]
+
+		annotation SummarizationSetBy = User
+
+	column 'As Of Month'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: [As Of Month]
+		sortByColumn: 'As Of Index'
+
+		annotation SummarizationSetBy = User
+
+	column 'As Of Index'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: [As Of Index]
+
+		annotation SummarizationSetBy = User
+
+	partition 'As Of' = calculated
+		mode: import
+		source = ```
+				VAR _months = GENERATESERIES ( 0, DATEDIFF ( DATE ( 2023, 1, 1 ), DATE ( 2026, 10, 31 ), MONTH ) )
+				RETURN
+				    SELECTCOLUMNS (
+				        _months,
+				        "As Of Date", EOMONTH ( DATE ( 2023, 1, 1 ), [Value] ),
+				        "As Of Month", FORMAT ( EOMONTH ( DATE ( 2023, 1, 1 ), [Value] ), "mmm yyyy" ),
+				        "As Of Index", [Value]
+				    )
+				```
+

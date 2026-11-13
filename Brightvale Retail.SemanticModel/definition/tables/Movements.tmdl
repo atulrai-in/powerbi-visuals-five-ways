@@ -1,0 +1,85 @@
+table Movements
+
+	column MovementID
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: MovementID
+
+		annotation SummarizationSetBy = User
+
+	column MoveDate
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: MoveDate
+
+		annotation SummarizationSetBy = User
+
+	column PersonID
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: PersonID
+
+		annotation SummarizationSetBy = User
+
+	column MoveType
+		dataType: string
+		summarizeBy: none
+		sourceColumn: MoveType
+
+		annotation SummarizationSetBy = User
+
+	column FromPositionID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: FromPositionID
+
+		annotation SummarizationSetBy = User
+
+	column ToPositionID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ToPositionID
+
+		annotation SummarizationSetBy = User
+
+	column FromTeamID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: FromTeamID
+
+		annotation SummarizationSetBy = User
+
+	column ToTeamID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ToTeamID
+
+		annotation SummarizationSetBy = User
+
+	column Detail
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Detail
+
+		annotation SummarizationSetBy = User
+
+	partition Movements = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "Movements.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"MovementID", Int64.Type}, {"MoveDate", type date}, {"PersonID", Int64.Type}, {"MoveType", type text}, {"FromPositionID", Int64.Type}, {"ToPositionID", Int64.Type}, {"FromTeamID", Int64.Type}, {"ToTeamID", Int64.Type}, {"Detail", type text}}, "en-US")
+				in
+				    Typed
+

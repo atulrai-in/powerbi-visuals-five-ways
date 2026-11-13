@@ -8,11 +8,11 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation __PBI_TimeIntelligenceEnabled = 0
-
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["DataFolder","Sales","Returns","Targets","Inventory","Calendar","Products","Categories","Stores","Customers","Promotions","_Measures"]
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DataFolder","Sales","Returns","Targets","Inventory","Calendar","Products","Categories","Stores","Customers","Promotions","People","Teams","Positions","OrgTimeline","Movements","_Measures","Metric","Breakdown","Store Scope","As Of"]
 
 ref table Sales
 ref table Returns
@@ -24,10 +24,16 @@ ref table Categories
 ref table Stores
 ref table Customers
 ref table Promotions
+ref table People
+ref table Teams
+ref table Positions
+ref table OrgTimeline
+ref table Movements
 ref table _Measures
 ref table Metric
 ref table Breakdown
 ref table 'Store Scope'
+ref table 'As Of'
 
 ref cultureInfo en-US
 

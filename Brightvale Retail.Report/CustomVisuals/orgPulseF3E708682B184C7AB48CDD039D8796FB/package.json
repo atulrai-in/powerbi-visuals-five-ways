@@ -1,0 +1,29 @@
+{
+  "version": "0.2.6.0",
+  "author": {
+    "name": "Brightvale demo",
+    "email": "visuals@example.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/orgPulseF3E708682B184C7AB48CDD039D8796FB.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "name": "orgPulse",
+    "displayName": "Org Pulse",
+    "guid": "orgPulseF3E708682B184C7AB48CDD039D8796FB",
+    "visualClassName": "Visual",
+    "version": "0.2.6.0",
+    "description": "Animated org chart for any hierarchy with history: constellation and org chart layouts, a time player, open roles, and who moved where.",
+    "supportUrl": "https://example.com/org-pulse",
+    "gitHubUrl": ""
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}
